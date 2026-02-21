@@ -1,0 +1,170 @@
+// Lucky88 - Singapore-style lottery number picker
+// Pick 6, 7, or 8 unique lucky numbers from 1 to 49
+// Numbers are displayed in colourful balls, sorted in order
+// Run: ./singlish run examples/143_lucky88.singlish
+// Then open: http://localhost:8088
+kampung main
+
+dapao "fmt"
+dapao "math/rand"
+dapao "net/http"
+dapao "strconv"
+dapao "time"
+dapao "sort"
+
+// Ball colours: vibrant palette for up to 8 balls
+confirm COL0 tar = "#e63946"
+confirm COL1 tar = "#f4a261"
+confirm COL2 tar = "#2a9d8f"
+confirm COL3 tar = "#e9c46a"
+confirm COL4 tar = "#264653"
+confirm COL5 tar = "#e76f51"
+confirm COL6 tar = "#6d6875"
+confirm COL7 tar = "#b5838d"
+
+// Pick a colour by index
+action ballColour(i nombor) tar {
+    got cols = []tar{COL0, COL1, COL2, COL3, COL4, COL5, COL6, COL7}
+    balek cols[i % count(cols)]
+}
+
+// Generate N unique lucky numbers from 1 to 49, sorted
+action pickNumbers(n nombor) []nombor {
+    rand.Seed(time.Now().UnixNano())
+    got seen = buat(map[int]bool)
+    got nums = buat([]nombor, 0)
+
+    loop count(nums) < n {
+        got pick = rand.Intn(49) + 1
+        nasi !seen[pick] {
+            seen[pick] = can
+            nums = upsize(nums, pick)
+        }
+    }
+
+    sort.Ints(nums)
+    balek nums
+}
+
+// Convert a number to its 3D gradient ball HTML
+// Uses radial-gradient to simulate a light source at top-left of a sphere
+action makeBall(num nombor, colour tar) tar {
+    got grad tar = "radial-gradient(circle at 35% 28%, rgba(255,255,255,0.75) 0%, " + colour + " 48%, rgba(0,0,0,0.38) 100%)"
+    got s tar = "<div class=\"ball\" style=\"background:" + grad + "\">" + strconv.Itoa(num) + "</div>"
+    balek s
+}
+
+// Build option button HTML
+action makeOpt(n nombor, selected nombor) tar {
+    got cls tar = "option-btn"
+    nasi n == selected {
+        cls = "option-btn active"
+    }
+    got link tar = "/?pick=" + strconv.Itoa(n)
+    balek "<a href=\"" + link + "\" class=\"" + cls + "\">" + strconv.Itoa(n) + " Numbers</a>"
+}
+
+// Build the balls row HTML
+action buildBallsRow(nums []nombor) tar {
+    got html tar = ""
+    loop i, n = all nums {
+        html = html + makeBall(n, ballColour(i))
+    }
+    balek html
+}
+
+// Build the full HTML page
+action buildPage(selected nombor, nums []nombor) tar {
+    // Option buttons
+    got opts tar = makeOpt(6, selected) + makeOpt(7, selected) + makeOpt(8, selected)
+
+    // Draw link
+    got drawLink tar = "/?pick=" + strconv.Itoa(selected) + "&draw=1"
+
+    // Result section
+    got resultSection tar = ""
+    nasi count(nums) > 0 {
+        got ballsHtml = buildBallsRow(nums)
+        resultSection = "<div class=\"result-section\"><div class=\"result-label\">Your Lucky Numbers</div><div class=\"balls-row\">" + ballsHtml + "</div><div class=\"tagline\">Huat ah! Good luck, boss!</div></div>"
+    }
+
+    // Assemble full page - CSS is embedded as one long string
+    got css tar = "*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }"
+    css = css + " body { min-height: 100vh; background: radial-gradient(ellipse at top, #1a0533 0%, #0d001a 60%); font-family: 'Outfit', sans-serif; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }"
+    css = css + " .container { width: 100%; max-width: 700px; display: flex; flex-direction: column; align-items: center; gap: 2rem; }"
+    css = css + " .logo { font-size: 4rem; font-weight: 800; letter-spacing: -2px; background: linear-gradient(135deg, #ffd700, #ff6b35, #e63946); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }"
+    css = css + " .logo-sub { font-size: 1.1rem; color: rgba(255,255,255,0.55); margin-top: 0.3rem; letter-spacing: 2px; text-transform: uppercase; }"
+    css = css + " .card { background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; padding: 2.5rem; width: 100%; box-shadow: 0 8px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1); }"
+    css = css + " .pick-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }"
+    css = css + " .option-btn { display: inline-block; padding: 0.75rem 2rem; border-radius: 50px; font-size: 1rem; font-weight: 600; text-decoration: none; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.15); transition: all 0.2s; }"
+    css = css + " .option-btn:hover { background: rgba(255,255,255,0.15); color: #fff; transform: translateY(-2px); }"
+    css = css + " .option-btn.active { background: linear-gradient(135deg, #e63946, #f4a261); color: #fff; border-color: transparent; box-shadow: 0 4px 20px rgba(230,57,70,0.5); }"
+    css = css + " .draw-btn { display: block; width: 100%; padding: 1rem; border-radius: 50px; font-size: 1.2rem; font-weight: 700; text-align: center; text-decoration: none; background: linear-gradient(135deg, #ffd700, #ff6b35); color: #1a0533; box-shadow: 0 4px 30px rgba(255,215,0,0.35); transition: all 0.2s; letter-spacing: 1px; }"
+    css = css + " .draw-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(255,215,0,0.5); }"
+    css = css + " .result-section { margin-top: 2rem; text-align: center; animation: fadeSlide 0.5s ease both; }"
+    css = css + " @keyframes fadeSlide { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }"
+    css = css + " .result-label { font-size: 0.85rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 1.5rem; }"
+    css = css + " .balls-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }"
+    css = css + " .ball { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; font-weight: 800; color: #fff; position: relative; box-shadow: 0 6px 24px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.4), inset 0 -6px 14px rgba(0,0,0,0.45), inset 0 3px 8px rgba(255,255,255,0.3); text-shadow: 0 1px 4px rgba(0,0,0,0.6); animation: popIn 0.45s cubic-bezier(0.34,1.56,0.64,1) both; transition: transform 0.25s, box-shadow 0.25s; }"
+    css = css + " .ball::after { content:''; position:absolute; top:10%; left:18%; width:38%; height:28%; border-radius:50%; background:rgba(255,255,255,0.35); filter:blur(3px); pointer-events:none; }"
+    css = css + " .ball:hover { transform: scale(1.12) rotate(5deg); }"
+    css = css + " .ball:nth-child(1){animation-delay:0.05s} .ball:nth-child(2){animation-delay:0.1s} .ball:nth-child(3){animation-delay:0.15s} .ball:nth-child(4){animation-delay:0.2s} .ball:nth-child(5){animation-delay:0.25s} .ball:nth-child(6){animation-delay:0.3s} .ball:nth-child(7){animation-delay:0.35s} .ball:nth-child(8){animation-delay:0.4s}"
+    css = css + " @keyframes popIn { from { opacity:0; transform:scale(0.3) rotate(-10deg); } to { opacity:1; transform:scale(1) rotate(0deg); } }"
+    css = css + " .tagline { font-size: 1.1rem; color: #ffd700; font-weight: 600; letter-spacing: 1px; }"
+    css = css + " .footer { font-size: 0.8rem; color: rgba(255,255,255,0.22); text-align: center; }"
+
+    got page tar = "<!DOCTYPE html><html lang=\"en\"><head>"
+    page = page + "<meta charset=\"UTF-8\"/>"
+    page = page + "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>"
+    page = page + "<title>Lucky88 - Huat Ah! Singapore Lottery Picker</title>"
+    page = page + "<meta name=\"description\" content=\"Lucky88: Pick 6, 7 or 8 unique lottery numbers from 1-49. Singapore-style lucky draw.\"/>"
+    page = page + "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"/>"
+    page = page + "<link href=\"https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap\" rel=\"stylesheet\"/>"
+    page = page + "<style>" + css + "</style>"
+    page = page + "</head><body>"
+    page = page + "<div class=\"container\">"
+    page = page + "<div class=\"header\"><div class=\"logo\">Lucky88</div><div class=\"logo-sub\">Singapore Lucky Draw</div></div>"
+    page = page + "<div class=\"card\">"
+    page = page + "<div class=\"pick-row\">" + opts + "</div>"
+    page = page + "<a href=\"" + drawLink + "\" class=\"draw-btn\">Draw My Numbers!</a>"
+    page = page + resultSection
+    page = page + "</div>"
+    page = page + "<div class=\"footer\">Powered by Singlish · Numbers 1-49 · No duplicates · Sorted for you, boss!</div>"
+    page = page + "</div>"
+    page = page + "</body></html>"
+
+    balek page
+}
+
+// HTTP handler
+action handleLucky88(w http.ResponseWriter, r ki http.Request) {
+    got query = r.URL.Query()
+
+    // Read ?pick= param, default to 6
+    got pickStr = query.Get("pick")
+    got selected nombor = 6
+    nasi pickStr != "" {
+        got parsed, err = strconv.Atoi(pickStr)
+        nasi err == kosong somemore parsed >= 6 somemore parsed <= 8 {
+            selected = parsed
+        }
+    }
+
+    // Read ?draw= to trigger number generation
+    got drawStr = query.Get("draw")
+    got nums = buat([]nombor, 0)
+    nasi drawStr == "1" {
+        nums = pickNumbers(selected)
+    }
+
+    got html = buildPage(selected, nums)
+    w.Header().Set("Content-Type", "text/html; charset=utf-8")
+    fmt.Fprint(w, html)
+}
+
+action boss() {
+    http.HandleFunc("/", handleLucky88)
+    gong("Lucky88 running at http://localhost:8088")
+    gong("Open your browser - huat ah!")
+    http.ListenAndServe(":8088", kosong)
+}
