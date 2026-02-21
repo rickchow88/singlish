@@ -26,7 +26,7 @@ func runRun(args []string) int {
 	inputFile := args[0]
 	tempPath, err := transpileToTemp(inputFile)
 	if err != nil {
-		printErrorWithInsult(err)
+		handleError(err, inputFile)
 		return 1
 	}
 	defer os.Remove(tempPath)

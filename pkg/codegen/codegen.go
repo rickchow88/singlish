@@ -213,6 +213,12 @@ func (g *generator) inspect(node ast.Node) {
 		if n == nil {
 			return
 		}
+	case *ast.TypeAssertionExpression:
+		if n == nil {
+			return
+		}
+		g.inspect(n.Left)
+		g.inspect(n.Type)
 	}
 }
 
@@ -313,6 +319,11 @@ func (g *generator) visit(node ast.Node) {
 		g.visitDeferStatement(n)
 	case *ast.IndexExpression:
 		g.visitIndexExpression(n)
+	case *ast.TypeAssertionExpression:
+		g.visitExpression(n.Left)
+		g.write(".(")
+		g.visitExpression(n.Type)
+		g.write(")")
 	default:
 		// Fallback for expressions
 		if expr, ok := node.(ast.Expression); ok {
@@ -549,6 +560,11 @@ func (g *generator) visitExpression(expr ast.Expression) {
 		g.visitFunctionLiteral(e)
 	case *ast.IndexExpression:
 		g.visitIndexExpression(e)
+	case *ast.TypeAssertionExpression:
+		g.visitExpression(e.Left)
+		g.write(".(")
+		g.visitExpression(e.Type)
+		g.write(")")
 	}
 }
 

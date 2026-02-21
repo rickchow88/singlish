@@ -43,6 +43,8 @@ var precedence = map[string]int{
 	">":  LESSGREATER,
 	"<=": LESSGREATER,
 	">=": LESSGREATER,
+	"&&": PRODUCT, // Should be logical AND
+	"||": SUM,     // Should be logical OR
 	"+":  SUM,
 	"-":  SUM,
 	"*":  PRODUCT,
@@ -895,6 +897,18 @@ func (p *Parser) parseCallOrGroupExpression(left ast.Expression) ast.Expression 
 		return p.parseCallExpression(left)
 	}
 	if p.curToken.Value == "." {
+		if p.peekTokenIs(lexer.TokenPunctuation) && p.peekToken.Value == "(" {
+			exp := &ast.TypeAssertionExpression{
+				Token: p.curToken,
+				Left:  left,
+			}
+			p.nextToken() // move to '('
+			exp.Type = p.parseTypeExpression()
+			if !p.expectPeek(lexer.TokenPunctuation, ")") {
+				return nil
+			}
+			return exp
+		}
 		return p.parseInfixExpression(left)
 	}
 	if p.curToken.Value == "[" {
@@ -1119,6 +1133,17 @@ func (p *Parser) parseType() *ast.Identifier {
 		// Standard chan Type
 		elem := p.parseType()
 		return &ast.Identifier{Token: p.curToken, Value: "chan " + elem.Value}
+	}
+
+	// Handle interface{} / kaki{}
+	if canonical == "interface" {
+		if p.peekTokenIs(lexer.TokenPunctuation) && p.peekToken.Value == "{" {
+			p.nextToken() // {
+			if p.peekTokenIs(lexer.TokenPunctuation) && p.peekToken.Value == "}" {
+				p.nextToken() // }
+				return &ast.Identifier{Token: p.curToken, Value: "interface{}"}
+			}
+		}
 	}
 
 	return &ast.Identifier{Token: p.curToken, Value: canonical}
@@ -1613,7 +1638,6 @@ func (p *Parser) parseFunctionLiteral() *ast.FunctionLiteral {
 
 	// Parse return type if present (not {)
 	if !p.peekTokenIs(lexer.TokenPunctuation) || p.peekToken.Value != "{" {
-		p.nextToken()
 		lit.ReturnType = p.parseType() // Consumes the type
 		// Double check if parseType consumes the token. Yes.
 	}

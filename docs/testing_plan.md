@@ -58,4 +58,4 @@ The following examples are passing:
 
 Other examples are currently failing and require fixes in the transpiler.
 
-run all singlish scripts in /examples and fix errors, run 1 test at a time directly from the terminal
+run all singlish scripts in /examples and fix errors, run 1 test at a time directly from the terminal, list all that fail test after fix

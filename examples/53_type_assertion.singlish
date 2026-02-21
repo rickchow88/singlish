@@ -4,7 +4,7 @@ kampung main
 dapao "fmt"
 
 action whatIsIt(i interface{}) {
-    see_how v := i.(type) {
+    see_how v := i.(pattern) {
     say int:
         fmt.Printf("Wah nombor sia: %d\n", v)
     say string:

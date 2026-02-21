@@ -708,3 +708,20 @@ func (sc *SelectCase) String() string {
 	}
 	return out.String()
 }
+
+type TypeAssertionExpression struct {
+	Token lexer.Token
+	Left  Expression
+	Type  Expression
+}
+
+func (tae *TypeAssertionExpression) expressionNode()      {}
+func (tae *TypeAssertionExpression) TokenLiteral() string { return tae.Token.Value }
+func (tae *TypeAssertionExpression) String() string {
+	var out bytes.Buffer
+	out.WriteString(tae.Left.String())
+	out.WriteString(".(")
+	out.WriteString(tae.Type.String())
+	out.WriteString(")")
+	return out.String()
+}
