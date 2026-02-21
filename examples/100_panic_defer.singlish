@@ -1,0 +1,15 @@
+kampung main
+dapao "fmt"
+
+action boss() {
+    nanti action() {
+        got r = heng()
+        nasi r != kosong {
+            gong("Recovered safely from:", r)
+        }
+    }()
+    
+    gong("About to crash!")
+    gabra("Oopsie daisy!")
+    gong("This never runs")
+}

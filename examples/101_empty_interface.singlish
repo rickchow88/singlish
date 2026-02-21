@@ -1,0 +1,12 @@
+kampung main
+dapao "fmt"
+
+action printAnything(i kaki{}) {
+    gong("Value:", i)
+}
+
+action boss() {
+    printAnything(42)
+    printAnything("hello")
+    printAnything(can)
+}

@@ -1,0 +1,13 @@
+kampung main
+dapao "fmt"
+
+pattern Score nombor
+
+action (s Score) IsPassing() bolehtak {
+    balek s >= 50
+}
+
+action boss() {
+    got myScore Score = 75
+    gong("Score:", myScore, "Passing?", myScore.IsPassing())
+}

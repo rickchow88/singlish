@@ -1,0 +1,14 @@
+kampung main
+dapao "fmt"
+
+action boss() {
+    got i = 0
+    got c1 = action() nombor {
+        i++
+        balek i
+    }
+    
+    gong(c1())
+    gong(c1())
+    gong(c1())
+}

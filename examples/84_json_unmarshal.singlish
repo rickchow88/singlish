@@ -1,0 +1,20 @@
+// JSON Unmarshaling
+kampung main
+dapao "encoding/json"
+dapao "fmt"
+
+pattern Person barang {
+    Name tar `json:"name"`
+    Age nombor `json:"age"`
+}
+
+action boss() {
+    got jsonStr = `{"name": "Ah Beng", "age": 25}`
+    got p Person
+    got err = json.Unmarshal([]byte(jsonStr), &p)
+    nasi err != kosong {
+        gong("Error:", err)
+        balek
+    }
+    gong("Parsed:", p.Name, p.Age)
+}

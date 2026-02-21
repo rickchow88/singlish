@@ -1,0 +1,20 @@
+// Interface mocking
+kampung main
+dapao "fmt"
+
+pattern Animal interface {
+    Speak() tar
+}
+
+pattern Dog barang {
+    Name tar
+}
+
+action (d *Dog) Speak() tar {
+    balek "Woof! My name is " + d.Name
+}
+
+action boss() {
+    got a Animal = &Dog{Name: "Sparky"}
+    gong(a.Speak())
+}

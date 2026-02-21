@@ -1,0 +1,14 @@
+kampung main
+dapao "fmt"
+
+action boss() {
+    got ch = buat(lobang nombor, 3)
+    ch pass 1
+    ch pass 2
+    ch pass 3
+    kwear(ch)
+    
+    loop v = all ch {
+        gong("Received:", v)
+    }
+}

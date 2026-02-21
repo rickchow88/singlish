@@ -1,0 +1,13 @@
+// reflection typeof
+kampung main
+dapao "fmt"
+dapao "reflect"
+
+action boss() {
+    got x = 42
+    got t = reflect.TypeOf(x)
+    gong("Type is:", t.Name())
+    
+    got v = reflect.ValueOf(x)
+    gong("Value is:", v.Int())
+}

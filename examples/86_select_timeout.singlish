@@ -1,0 +1,20 @@
+// Select with timeout
+kampung main
+dapao "fmt"
+dapao "time"
+
+action boss() {
+    got ch = buat(lobang nombor)
+    
+    chiong action() {
+        time.Sleep(2 * time.Second)
+        ch pass 42
+    }()
+    
+    tikam {
+    say res := catch ch:
+        gong("Got result:", res)
+    say catch time.After(1 * time.Second):
+        gong("Timeout!")
+    }
+}

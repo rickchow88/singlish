@@ -40,7 +40,7 @@ cd ralph
 go test -v ./tests/integration
 ```
 
-## Current Status (As of Jan 2026)
+## Current Status (As of Feb 2026)
 
 All scripts passed `run_all.go` execution locally, except for a few instances:
 

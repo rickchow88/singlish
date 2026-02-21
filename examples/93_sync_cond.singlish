@@ -1,0 +1,32 @@
+kampung main
+dapao "fmt"
+dapao "sync"
+dapao "time"
+
+action boss() {
+    got m sync.Mutex
+    got c = sync.NewCond(&m)
+    got ready = cannot
+
+    loop i := 0; i < 3; i++ {
+        chiong action(id nombor) {
+            c.L.Lock()
+            loop !ready {
+                c.Wait()
+            }
+            gong("Goroutine", id, "started!")
+            c.L.Unlock()
+        }(i)
+    }
+
+    gong("Preparing...")
+    time.Sleep(1 * time.Second)
+    
+    c.L.Lock()
+    ready = can
+    c.Broadcast()
+    c.L.Unlock()
+    
+    time.Sleep(1 * time.Second)
+    gong("Done!")
+}

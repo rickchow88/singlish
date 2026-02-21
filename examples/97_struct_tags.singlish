@@ -1,0 +1,18 @@
+kampung main
+dapao "fmt"
+dapao "reflect"
+
+pattern User barang {
+    Name  tar `json:"name" xml:"Name"`
+    Email tar `json:"email,omitempty"`
+}
+
+action boss() {
+    got u = User{Name: "Ah Kow"}
+    got t = reflect.TypeOf(u)
+    
+    loop i := 0; i < t.NumField(); i++ {
+        got field = t.Field(i)
+        gong("Field:", field.Name, "JSON Tag:", field.Tag.Get("json"))
+    }
+}

@@ -121,18 +121,19 @@ Running the integration tests (`go test -v ./tests/integration`) revealed multip
 
 ### Test Results Summary (Updated Feb 2026)
 
-- **Passing**: 82/82 examples (100% ✅, accounting for intentional cancellations/exits)
+- **Passing**: 102/102 examples (100% ✅, accounting for intentional cancellations/exits)
 - **Failing**: 0 examples
 
 Key passing tests demonstrate that core functionality works:
 
 - Hello World, FizzBuzz, Structs/Interfaces
-- Switch/Case and Select statements
+- Switch/Case and Select statements (including select timeouts)
 - Arrays/Slices/Slice Tricks, Maps/SyncMap, Defer, Panic/Recover, Pointers
-- Variadic functions, Recursion
+- Variadic functions, Recursion, Deep Closures
 - File I/O, JSON, HTTP Server/Client
-- Strings, Math, Time, Context Timeout/Cancel
-- Mutex, WaitGroup, Atomic operations
+- Strings, Math, Time, Context Timeout/Cancel/Values
+- Mutex, Cond, WaitGroup, sync.Pool, Atomic operations
 - Constants, Command-line arguments
-- Deadlock-free channel operations
-- Sorting, Custom Errors, Method Sets, Interface Embedding
+- Deadlock-free channel operations and yielding iteration
+- Sorting, Custom Errors, Method Sets, Interface Embedding, empty interfaces
+- Struct Tags, Type Aliases, Reflection

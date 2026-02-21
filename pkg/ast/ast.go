@@ -168,9 +168,10 @@ func (ce *CallExpression) String() string {
 
 // TypeStatement represents a type definition (type Name Type).
 type TypeStatement struct {
-	Token lexer.Token // the 'type' token
-	Name  *Identifier
-	Value Expression
+	Token   lexer.Token // the 'type' token
+	Name    *Identifier
+	IsAlias bool
+	Value   Expression
 }
 
 func (ts *TypeStatement) statementNode()       {}
@@ -179,6 +180,9 @@ func (ts *TypeStatement) String() string {
 	var out bytes.Buffer
 	out.WriteString(ts.TokenLiteral() + " ")
 	out.WriteString(ts.Name.String())
+	if ts.IsAlias {
+		out.WriteString(" =")
+	}
 	out.WriteString(" ")
 	if ts.Value != nil {
 		out.WriteString(ts.Value.String())

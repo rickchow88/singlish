@@ -1,0 +1,15 @@
+// context.WithValue
+kampung main
+dapao "context"
+dapao "fmt"
+
+action boss() {
+    got ctx = context.WithValue(context.Background(), "myKey", "myValue")
+    
+    got val = ctx.Value("myKey")
+    nasi val != kosong {
+        gong("Found value:", val)
+    } den {
+        gong("Value not found")
+    }
+}

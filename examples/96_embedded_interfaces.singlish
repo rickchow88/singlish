@@ -1,0 +1,33 @@
+kampung main
+dapao "fmt"
+
+pattern Reader interface {
+    Read() tar
+}
+
+pattern Writer interface {
+    Write(data tar)
+}
+
+pattern ReadWriter interface {
+    Read() tar
+    Write(data tar)
+}
+
+pattern File barang {
+    content tar
+}
+
+action (f *File) Read() tar {
+    balek f.content
+}
+
+action (f *File) Write(data tar) {
+    f.content = data
+}
+
+action boss() {
+    got rw ReadWriter = &File{content: "hello"}
+    rw.Write("modified")
+    gong("Content:", rw.Read())
+}

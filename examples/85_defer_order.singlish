@@ -1,0 +1,11 @@
+// Defer execution order (LIFO)
+kampung main
+dapao "fmt"
+
+action boss() {
+    gong("Start")
+    nanti gong("First defer (runs last)")
+    nanti gong("Second defer")
+    nanti gong("Third defer (runs first)")
+    gong("End")
+}

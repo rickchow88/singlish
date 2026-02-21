@@ -1,0 +1,25 @@
+// Custom sorting with sort.Slice
+kampung main
+dapao "fmt"
+dapao "sort"
+
+pattern Person barang {
+    Name tar
+    Age nombor
+}
+
+action boss() {
+    got people = []Person{
+        {Name: "Ah Beng", Age: 30},
+        {Name: "Siti", Age: 25},
+        {Name: "Muthu", Age: 40},
+    }
+    
+    sort.Slice(people, action(i, j nombor) bolehtak {
+        balek people[i].Age < people[j].Age
+    })
+    
+    loop _, p = all people {
+        gong(p.Name, p.Age)
+    }
+}

@@ -629,7 +629,11 @@ func (g *generator) dedent() {
 func (g *generator) visitTypeStatement(stmt *ast.TypeStatement) {
 	g.write("type ")
 	g.write(stmt.Name.Value)
-	g.write(" ")
+	if stmt.IsAlias {
+		g.write(" = ")
+	} else {
+		g.write(" ")
+	}
 	g.visitExpression(stmt.Value)
 }
 

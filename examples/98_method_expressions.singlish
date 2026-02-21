@@ -1,0 +1,17 @@
+kampung main
+dapao "fmt"
+
+pattern Math barang {
+    Factor nombor
+}
+
+action (m Math) Multiply(val nombor) nombor {
+    balek m.Factor * val
+}
+
+action boss() {
+    got m = Math{Factor: 10}
+    got fn = Math.Multiply
+    got result = fn(m, 5)
+    gong("Result:", result)
+}

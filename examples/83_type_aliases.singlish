@@ -1,0 +1,10 @@
+// Type aliases
+kampung main
+dapao "fmt"
+
+pattern CustomNum = nombor
+
+action boss() {
+    got x CustomNum = 100
+    gong("Custom number is", x)
+}

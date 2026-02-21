@@ -625,6 +625,11 @@ func (p *Parser) parseTypeStatement() *ast.TypeStatement {
 
 	stmt.Name = &ast.Identifier{Token: p.curToken, Value: p.curToken.Value}
 
+	if p.peekTokenIs(lexer.TokenOperator) && p.peekToken.Value == "=" {
+		p.nextToken() // consume '='
+		stmt.IsAlias = true
+	}
+
 	p.nextToken()
 	stmt.Value = p.parseExpression(LOWEST)
 
@@ -649,11 +654,16 @@ func (p *Parser) parseExpression(precedence int) ast.Expression {
 			if _, ok := leftExp.(*ast.IncDecStatement); ok {
 				return leftExp
 			}
-			if _, ok := leftExp.(*ast.InfixExpression); ok {
-				return leftExp
+			if infix, ok := leftExp.(*ast.InfixExpression); ok {
+				if infix.Operator != "." {
+					return leftExp
+				}
 			}
-			if _, ok := leftExp.(*ast.PrefixExpression); ok {
-				return leftExp
+			if prefix, ok := leftExp.(*ast.PrefixExpression); ok {
+				// Allow &T{} and *T{}
+				if prefix.Operator != "&" && prefix.Operator != "*" {
+					return leftExp
+				}
 			}
 			if _, ok := leftExp.(*ast.IndexExpression); ok {
 				return leftExp

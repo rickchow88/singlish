@@ -1,0 +1,19 @@
+// sync.Pool usage
+kampung main
+dapao "fmt"
+dapao "sync"
+
+action boss() {
+    got pool = &sync.Pool{
+        New: action() kaki{} {
+            balek "New String"
+        },
+    }
+    
+    got str = pool.Get().(tar)
+    gong("Got:", str)
+    
+    pool.Put("Used String")
+    got str2 = pool.Get().(tar)
+    gong("Got again:", str2)
+}

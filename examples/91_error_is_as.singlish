@@ -1,0 +1,26 @@
+// errors.Is and errors.As
+kampung main
+dapao "errors"
+dapao "fmt"
+
+pattern MyErr barang {
+    Msg tar
+}
+
+action (e *MyErr) Error() tar {
+    balek e.Msg
+}
+
+action boss() {
+    got err1 = &MyErr{Msg: "custom error"}
+    got wrapped = fmt.Errorf("wrapped: %w", err1)
+    
+    nasi errors.Is(wrapped, err1) {
+        gong("Is MyErr")
+    }
+    
+    got target *MyErr
+    nasi errors.As(wrapped, &target) {
+        gong("As MyErr:", target.Msg)
+    }
+}

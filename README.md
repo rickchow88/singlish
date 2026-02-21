@@ -133,7 +133,7 @@ Watch how Singlish handles `chiong` and `lobang` for high-performance concurrenc
 
 ## 📂 Examples (First 50)
 
-Explore all [80+ examples here](/examples).
+Explore all [100+ examples here](/examples).
 
 1. [01_hello_world.singlish](/examples/01_hello_world.singlish)
 2. [02_fizzbuzz.singlish](/examples/02_fizzbuzz.singlish)

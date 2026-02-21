@@ -1,0 +1,14 @@
+// atomic.Value usage
+kampung main
+dapao "fmt"
+dapao "sync/atomic"
+
+action boss() {
+    got val atomic.Value
+    val.Store("Initial Value")
+    
+    gong("Value:", val.Load().(tar))
+    
+    val.Store("Updated Value")
+    gong("Value:", val.Load().(tar))
+}
