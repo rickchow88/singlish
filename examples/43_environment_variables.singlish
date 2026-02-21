@@ -1,0 +1,14 @@
+// Environment Variables example
+kampung main
+dapao "fmt"
+dapao "os"
+
+action boss() {
+    os.Setenv("FOO", "1")
+    gong("FOO:", os.Getenv("FOO"))
+    gong("BAR:", os.Getenv("BAR"))
+
+    loop _, e = all os.Environ() {
+        gong(e)
+    }
+}

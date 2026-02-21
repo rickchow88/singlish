@@ -1,0 +1,33 @@
+// sync.Map for concurrent safe map operations
+// Regular maps are not goroutine-safe!
+kampung main
+dapao "fmt"
+dapao "sync"
+
+action boss() {
+    got sm sync.Map
+
+    // Store values concurrently
+    got wg sync.WaitGroup
+    loop i := 0; i < 5; i++ {
+        wg.Add(1)
+        chiong action(n nombor) {
+            nanti wg.Done()
+            sm.Store(fmt.Sprintf("key%d", n), n*10)
+        }(i)
+    }
+    wg.Wait()
+
+    // Load a specific value
+    got val, ok = sm.Load("key3")
+    nasi ok {
+        fmt.Printf("key3 = %v\n", val)
+    }
+
+    // Range over all entries
+    gong("All entries:")
+    sm.Range(func(k, v interface{}) bool {
+        fmt.Printf("  %v = %v\n", k, v)
+        return true
+    })
+}

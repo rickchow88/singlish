@@ -1,0 +1,10 @@
+// Exiting with specific status codes
+kampung main
+dapao "fmt"
+dapao "os"
+
+action boss() {
+    nanti gong("This will not be printed because we use os.Exit")
+
+    os.Exit(3)
+}

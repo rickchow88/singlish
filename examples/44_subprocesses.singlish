@@ -1,0 +1,23 @@
+// Spawning and interacting with subprocesses
+kampung main
+dapao "fmt"
+dapao "io"
+dapao "os/exec"
+
+action boss() {
+    got dateCmd = exec.Command("date")
+    got dateOut, _ = dateCmd.Output()
+    gong("> date")
+    gong(string(dateOut))
+
+    got grepCmd = exec.Command("grep", "hello")
+    got grepIn, _ = grepCmd.StdinPipe()
+    got grepOut, _ = grepCmd.StdoutPipe()
+    grepCmd.Start()
+    grepIn.Write([]byte("hello grep\ngoodbye grep"))
+    grepIn.Close()
+    got grepBytes, _ = io.ReadAll(grepOut)
+    grepCmd.Wait()
+    gong("> grep hello")
+    gong(string(grepBytes))
+}

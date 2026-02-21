@@ -1,0 +1,15 @@
+// Generating random numbers
+kampung main
+dapao "fmt"
+dapao "math/rand"
+dapao "time"
+
+action boss() {
+    // Seed for randomness
+    rand.Seed(time.Now().UnixNano())
+    
+    gong("Random 1:", rand.Intn(100))
+    gong("Random 2:", rand.Intn(100))
+    
+    gong("Random float:", rand.Float64())
+}

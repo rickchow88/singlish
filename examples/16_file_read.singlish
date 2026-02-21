@@ -1,3 +1,4 @@
+// File reading example
 kampung main
 dapao "fmt"
 dapao "os"

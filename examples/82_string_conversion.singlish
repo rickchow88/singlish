@@ -1,0 +1,35 @@
+// String, bytes, and rune conversions
+// Understanding how Singlish handles text encoding
+kampung main
+dapao "fmt"
+
+action boss() {
+    got s = "Hello, Singapore!"
+
+    // String to bytes
+    got b = []byte(s)
+    fmt.Printf("String: %s\n", s)
+    fmt.Printf("Bytes (%d): first 5 = %v\n", count(b), b[:5])
+
+    // String to runes (handles Unicode)
+    got r = []rune(s)
+    fmt.Printf("Runes (%d chars)\n", count(r))
+
+    // Iterate over runes (correct for Unicode)
+    gong("First 7 characters:")
+    got cnt = 0
+    loop i, ch = all s {
+        nasi cnt < 7 {
+            fmt.Printf("  [%d] %c (U+%04X)\n", i, ch, ch)
+            cnt++
+        }
+    }
+
+    // Byte to string
+    got bs = []byte{72, 101, 108, 108, 111}
+    gong("From bytes:", string(bs))
+
+    // int32 rune slice to string
+    got rs = []rune{83, 105, 97, 111, 33}
+    gong("From runes:", string(rs))
+}

@@ -1,0 +1,16 @@
+kampung main
+dapao "fmt"
+
+action boss() {
+    got order tar = "Nasi Lemak"
+    got price nombor = 5
+    
+    gong("Your order: " + order)
+    gong("Price: $", price)
+    
+    nasi price > 4 {
+        gong("Wah so expensive!")
+    } den {
+        gong("Swee lah, cheap!")
+    }
+}

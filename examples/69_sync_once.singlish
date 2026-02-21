@@ -1,0 +1,31 @@
+// sync.Once for one-time initialization
+// Useful for lazy singletons
+kampung main
+dapao "fmt"
+dapao "sync"
+
+got once sync.Once
+got config tar
+
+action initConfig() {
+    gong("Initializing config... (only once lah!)")
+    config = "DATABASE_URL=localhost:5432"
+}
+
+action getConfig() tar {
+    once.Do(initConfig)
+    balek config
+}
+
+action boss() {
+    got wg sync.WaitGroup
+    loop i := 0; i < 5; i++ {
+        wg.Add(1)
+        chiong action() {
+            nanti wg.Done()
+            got cfg = getConfig()
+            gong("Got config:", cfg)
+        }()
+    }
+    wg.Wait()
+}

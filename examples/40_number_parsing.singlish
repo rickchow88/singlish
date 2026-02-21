@@ -1,0 +1,18 @@
+// Conversion between strings and numbers
+kampung main
+dapao "fmt"
+dapao "strconv"
+
+action boss() {
+    // ParseFloat
+    got f, _ = strconv.ParseFloat("1.234", 64)
+    gong("Float:", f)
+
+    // ParseInt
+    got i, _ = strconv.ParseInt("123", 0, 64)
+    gong("Int:", i)
+
+    // Itoa
+    got s = strconv.Itoa(456)
+    gong("String:", s)
+}

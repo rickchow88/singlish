@@ -1,0 +1,47 @@
+// Worker pool using goroutines and channels
+// Like a hawker centre with multiple stalls processing orders
+kampung main
+dapao "fmt"
+dapao "sync"
+dapao "time"
+
+action worker(id nombor, jobs lobang nombor, results lobang nombor, wg ki sync.WaitGroup) {
+    nanti wg.Done()
+    loop j = all jobs {
+        fmt.Printf("Worker %d processing job %d\n", id, j)
+        time.Sleep(100 * time.Millisecond)
+        results pass j * 2
+    }
+}
+
+action boss() {
+    got numWorkers = 3
+    got numJobs    = 9
+
+    got jobs    = buat(lobang nombor, numJobs)
+    got results = buat(lobang nombor, numJobs)
+    got wg sync.WaitGroup
+
+    // Start workers
+    loop i := 1; i <= numWorkers; i++ {
+        wg.Add(1)
+        chiong worker(i, jobs, results, &wg)
+    }
+
+    // Send jobs
+    loop j := 1; j <= numJobs; j++ {
+        jobs pass j
+    }
+    kwear(jobs)
+
+    // Wait then close results
+    chiong action() {
+        wg.Wait()
+        kwear(results)
+    }()
+
+    // Collect results
+    loop r = all results {
+        fmt.Printf("Result: %d\n", r)
+    }
+}

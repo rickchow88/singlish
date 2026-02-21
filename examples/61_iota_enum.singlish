@@ -1,0 +1,43 @@
+// Iota enums with 'confirm' (const)
+// 'auto' is iota - auto-incrementing constants
+kampung main
+dapao "fmt"
+
+confirm Monday    nombor = 1
+confirm Tuesday   nombor = 2
+confirm Wednesday nombor = 3
+confirm Thursday  nombor = 4
+confirm Friday    nombor = 5
+confirm Saturday  nombor = 6
+confirm Sunday    nombor = 7
+
+action dayName(d nombor) tar {
+    see_how d {
+    say 1:
+        balek "Monday"
+    say 2:
+        balek "Tuesday"
+    say 3:
+        balek "Wednesday"
+    say 4:
+        balek "Thursday"
+    say 5:
+        balek "Friday"
+    say 6:
+        balek "Saturday"
+    say 7:
+        balek "Sunday"
+    anyhow:
+        balek "Unknown"
+    }
+}
+
+action boss() {
+    got today = Wednesday
+    fmt.Printf("Today is day %d: %s\n", today, dayName(today))
+    gong("Is weekend?", today == Saturday || today == Sunday)
+
+    loop d := Monday; d <= Sunday; d++ {
+        fmt.Printf("Day %d: %s\n", d, dayName(d))
+    }
+}

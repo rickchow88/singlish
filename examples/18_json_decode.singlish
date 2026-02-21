@@ -1,3 +1,4 @@
+// JSON Decoding example
 kampung main
 dapao "fmt"
 dapao "encoding/json"

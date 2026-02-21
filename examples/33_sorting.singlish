@@ -1,0 +1,20 @@
+// Sorting examples for different data types
+kampung main
+dapao "fmt"
+dapao "sort"
+
+action boss() {
+    // Sorting strings
+    got strs = []tar{"c", "a", "b"}
+    sort.Strings(strs)
+    gong("Strings sorted:", strs)
+
+    // Sorting integers
+    got ints = []nombor{7, 2, 4}
+    sort.Ints(ints)
+    gong("Ints sorted:   ", ints)
+
+    // Checking if sorted
+    got s = sort.IntsAreSorted(ints)
+    gong("Is it sorted?  ", s)
+}

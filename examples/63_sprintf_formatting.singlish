@@ -1,0 +1,30 @@
+// fmt.Sprintf for string formatting
+// Different verbs for formatting output
+kampung main
+dapao "fmt"
+
+pattern Point barang {
+    x nombor
+    y nombor
+}
+
+action boss() {
+    // Values
+    gong("Integer:  ", fmt.Sprintf("%d", 42))
+    gong("Binary:   ", fmt.Sprintf("%b", 42))
+    gong("Hex:      ", fmt.Sprintf("%x", 255))
+    gong("Float:    ", fmt.Sprintf("%.2f", 3.14159))
+    gong("String:   ", fmt.Sprintf("%s", "kopitiam"))
+    gong("Quoted:   ", fmt.Sprintf("%q", "hawker centre"))
+    gong("Bool:     ", fmt.Sprintf("%t", can))
+
+    // Padding
+    gong("Padded:   ", fmt.Sprintf("|%10d|", 42))
+    gong("Left:     ", fmt.Sprintf("|%-10d|", 42))
+    gong("ZeroPad:  ", fmt.Sprintf("|%010d|", 42))
+
+    // Struct
+    got p = Point{x: 1, y: 2}
+    gong("Struct:   ", fmt.Sprintf("%v", p))
+    gong("Struct+:  ", fmt.Sprintf("%+v", p))
+}

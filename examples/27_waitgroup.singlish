@@ -1,3 +1,5 @@
+// WaitGroup for coordinating multiple goroutines
+// 'chiong' starts a goroutine (go)
 kampung main
 dapao "fmt"
 dapao "sync"

@@ -1,0 +1,24 @@
+// Rate limiting: control request throughput
+// Like a queue management system at a popular hawker stall
+kampung main
+dapao "fmt"
+dapao "time"
+
+action boss() {
+    got requests = buat(lobang nombor, 5)
+    loop i := 1; i <= 5; i++ {
+        requests pass i
+    }
+    kwear(requests)
+
+    // Rate limiter: 1 request per 200ms
+    got limiter = time.NewTicker(200 * time.Millisecond)
+
+    loop req = all requests {
+        catch limiter.C
+        fmt.Printf("Request %d handled at %s\n", req, time.Now().Format("15:04:05.000"))
+    }
+
+    limiter.Stop()
+    gong("All requests processed!")
+}

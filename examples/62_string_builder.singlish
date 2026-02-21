@@ -1,0 +1,20 @@
+// Efficient string building with strings.Builder
+// Faster than string concatenation in loops
+kampung main
+dapao "fmt"
+dapao "strings"
+
+action boss() {
+    got sb strings.Builder
+    got words = []tar{"Wah", "lau", "eh,", "this", "is", "Singlish!"}
+
+    loop i, w = all words {
+        nasi i > 0 {
+            sb.WriteString(" ")
+        }
+        sb.WriteString(w)
+    }
+
+    gong("Built string:", sb.String())
+    fmt.Printf("Length: %d\n", sb.Len())
+}

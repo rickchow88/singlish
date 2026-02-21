@@ -1,3 +1,5 @@
+// Context with Timeout example
+// 'tikam' is select statement
 kampung main
 dapao "fmt"
 dapao "time"

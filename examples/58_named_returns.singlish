@@ -1,0 +1,29 @@
+// Named return values
+// Functions can name their return variables
+kampung main
+dapao "fmt"
+
+// Use a struct to return min and max together
+pattern MinMax barang {
+    Min nombor
+    Max nombor
+}
+
+action findMinMax(arr []nombor) MinMax {
+    got result = MinMax{Min: arr[0], Max: arr[0]}
+    loop _, v = all arr {
+        nasi v < result.Min {
+            result.Min = v
+        }
+        nasi v > result.Max {
+            result.Max = v
+        }
+    }
+    balek result
+}
+
+action boss() {
+    got nums = []nombor{3, 1, 4, 1, 5, 9, 2, 6}
+    got r = findMinMax(nums)
+    fmt.Printf("Min: %d, Max: %d\n", r.Min, r.Max)
+}

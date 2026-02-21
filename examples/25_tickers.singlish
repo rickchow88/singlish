@@ -1,3 +1,5 @@
+// Tickers for recurring tasks
+// 'nanti' is defer, 'catch' is receive from channel
 kampung main
 dapao "fmt"
 dapao "time"

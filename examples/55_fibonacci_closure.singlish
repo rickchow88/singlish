@@ -1,0 +1,15 @@
+// Fibonacci using iterative approach
+kampung main
+dapao "fmt"
+
+action boss() {
+    got a nombor = 0
+    got b nombor = 1
+    gong("Fibonacci sequence:")
+    loop i := 0; i < 10; i++ {
+        gong(a)
+        got tmp = a + b
+        a = b
+        b = tmp
+    }
+}

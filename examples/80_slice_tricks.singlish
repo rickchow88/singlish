@@ -1,0 +1,45 @@
+// Common slice tricks and patterns
+kampung main
+dapao "fmt"
+
+action boss() {
+    got a = []nombor{1, 2, 3, 4, 5}
+
+    // Copy a slice
+    got b = buat([]nombor, count(a))
+    copy(b, a)
+    gong("Original:", a)
+    gong("Copy:    ", b)
+
+    // Delete element at index 2 (keep order)
+    got delIdx = 2
+    got c = upsize(a[:delIdx], a[delIdx+1:]...)
+    gong("Delete index 2:", c)
+
+    // Prepend
+    got d = upsize([]nombor{0}, a...)
+    gong("Prepend 0:", d)
+
+    // Reverse a slice
+    got e = []nombor{1, 2, 3, 4, 5}
+    got left = 0
+    got right = count(e) - 1
+    loop left < right {
+        got tmp = e[left]
+        e[left] = e[right]
+        e[right] = tmp
+        left++
+        right--
+    }
+    gong("Reversed:", e)
+
+    // 2D slice
+    got matrix = [][]nombor{
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9},
+    }
+    gong("Matrix row 0:", matrix[0])
+    gong("Matrix row 1:", matrix[1])
+    gong("Matrix row 2:", matrix[2])
+}

@@ -1,0 +1,35 @@
+// Linked list implemented from scratch
+kampung main
+dapao "fmt"
+
+pattern Node barang {
+    Value nombor
+    Next  ki Node
+}
+
+pattern LinkedList barang {
+    Head ki Node
+}
+
+action (l ki LinkedList) Push(val nombor) {
+    got n = &Node{Value: val, Next: l.Head}
+    l.Head = n
+}
+
+action (l ki LinkedList) Print() {
+    got cur = l.Head
+    loop cur != kosong {
+        fmt.Printf("%d -> ", cur.Value)
+        cur = cur.Next
+    }
+    gong("nil")
+}
+
+action boss() {
+    got list = &LinkedList{}
+    list.Push(1)
+    list.Push(2)
+    list.Push(3)
+    list.Push(4)
+    list.Print()
+}

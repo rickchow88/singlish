@@ -1,0 +1,31 @@
+// Select with Default (Non-blocking communication)
+// 'tikam' is select statement, 'anyhow' is default
+kampung main
+dapao "fmt"
+dapao "time"
+
+action boss() {
+    got c1 = buat(lobang tar)
+    got c2 = buat(lobang tar)
+
+    chiong action() {
+        time.Sleep(1 * time.Second)
+        c1 pass "one"
+    }()
+    chiong action() {
+        time.Sleep(2 * time.Second)
+        c2 pass "two"
+    }()
+
+    loop i := 0; i < 2; i++ {
+        tikam {
+        say msg1 := catch c1:
+            gong("received", msg1)
+        say msg2 := catch c2:
+            gong("received", msg2)
+        anyhow:
+            gong("nothing received yet")
+            time.Sleep(500 * time.Millisecond)
+        }
+    }
+}

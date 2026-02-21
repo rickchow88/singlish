@@ -1,3 +1,5 @@
+// JSON Encoding example
+// 'barang' defines a struct
 kampung main
 dapao "fmt"
 dapao "encoding/json"

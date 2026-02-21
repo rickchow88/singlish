@@ -1,0 +1,16 @@
+// Generating SHA1 hashes
+kampung main
+dapao "fmt"
+dapao "crypto/sha1"
+
+action boss() {
+    got s = "sha1 this for me please"
+    got h = sha1.New()
+    
+    h.Write([]byte(s))
+    
+    got bs = h.Sum(kosong)
+    
+    gong("Original:", s)
+    fmt.Printf("SHA1: %x\n", bs)
+}

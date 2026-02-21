@@ -1,0 +1,17 @@
+// Regular Expressions example
+kampung main
+dapao "fmt"
+dapao "regexp"
+
+action boss() {
+    // Simple regex match
+    got match, _ = regexp.MatchString("p([a-z]+)ch", "peach")
+    gong("Match peach:", match)
+
+    // Compiled regex
+    got r, _ = regexp.Compile("p([a-z]+)ch")
+    
+    gong("MatchString:", r.MatchString("peach"))
+    gong("FindString: ", r.FindString("peach punch"))
+    gong("FindStringIndex:", r.FindStringIndex("peach punch"))
+}

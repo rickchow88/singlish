@@ -1,0 +1,25 @@
+// Fan-out pattern: distribute work to multiple goroutines
+// One producer, many consumers
+// 'chiong' is go (goroutine), 'sync.WaitGroup' coordinates them
+kampung main
+dapao "fmt"
+dapao "sync"
+
+action process(id nombor, val nombor, wg ki sync.WaitGroup) {
+    nanti wg.Done()
+    got result = val * val
+    fmt.Printf("Worker %d: %d^2 = %d\n", id, val, result)
+}
+
+action boss() {
+    got nums = []nombor{1, 2, 3, 4, 5, 6, 7, 8}
+    got wg sync.WaitGroup
+
+    loop i, n = all nums {
+        wg.Add(1)
+        chiong process(i+1, n, &wg)
+    }
+
+    wg.Wait()
+    gong("All workers done liao!")
+}

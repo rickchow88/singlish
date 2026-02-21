@@ -1,0 +1,33 @@
+// Higher-order functions: map, filter, reduce
+// Functions that take or return other functions
+kampung main
+dapao "fmt"
+
+action boss() {
+    got nums = []nombor{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+    // Manual map: double each element
+    got doubled = buat([]nombor, count(nums))
+    loop i, v = all nums {
+        doubled[i] = v * 2
+    }
+
+    // Manual filter: keep only evens
+    got evens []nombor
+    loop _, v = all nums {
+        nasi v%2 == 0 {
+            evens = upsize(evens, v)
+        }
+    }
+
+    // Manual reduce: sum all
+    got total nombor = 0
+    loop _, v = all nums {
+        total += v
+    }
+
+    gong("Original:", nums)
+    gong("Doubled:", doubled)
+    gong("Evens:  ", evens)
+    gong("Sum:    ", total)
+}

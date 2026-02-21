@@ -1,0 +1,19 @@
+// XML handling with struct tagging
+kampung main
+dapao "fmt"
+dapao "encoding/xml"
+
+pattern Plant barang {
+    XMLName xml.Name `xml:"plant"`
+    ID      nombor   `xml:"id,attr"`
+    Name    tar      `xml:"name"`
+    Origin  []tar    `xml:"origin"`
+}
+
+action boss() {
+    got coffee = &Plant{ID: 27, Name: "Coffee"}
+    coffee.Origin = []tar{"Ethiopia", "Brazil"}
+
+    got out, _ = xml.MarshalIndent(coffee, " ", "  ")
+    gong(string(out))
+}

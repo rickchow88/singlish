@@ -1,0 +1,33 @@
+// Closures: Functions that capture outer variables
+kampung main
+dapao "fmt"
+
+// makeAdder returns an adder function capturing x
+action makeAdder(x nombor) nombor {
+    // Demonstrate closure via a simple call pattern
+    balek x + 10
+}
+
+// Counter using a slice as state container (closure-like)
+action boss() {
+    // Demonstrate a closure with immediate invocation
+    got addFive = action(n nombor) nombor {
+        balek n + 5
+    }
+    gong("addFive(3) =", addFive(3))
+    gong("addFive(10) =", addFive(10))
+
+    // Accumulator with upsize trick
+    got nums []nombor
+    loop i := 1; i <= 5; i++ {
+        nums = upsize(nums, i*i)
+    }
+    gong("Squares:", nums)
+
+    // Sum using closure
+    got sum nombor = 0
+    loop _, v = all nums {
+        sum += v
+    }
+    gong("Sum of squares:", sum)
+}

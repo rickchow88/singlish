@@ -1,0 +1,38 @@
+// Queue data structure implementation
+// FIFO - First In First Out. Like a kopitiam queue!
+kampung main
+dapao "fmt"
+
+pattern Queue barang {
+    items []tar
+}
+
+action (q ki Queue) Enqueue(v tar) {
+    q.items = upsize(q.items, v)
+}
+
+action (q ki Queue) Dequeue() tar {
+    nasi count(q.items) == 0 {
+        balek ""
+    }
+    got v = q.items[0]
+    q.items = q.items[1:]
+    balek v
+}
+
+action (q Queue) Size() nombor {
+    balek count(q.items)
+}
+
+action boss() {
+    got q = &Queue{}
+    q.Enqueue("Ah Beng")
+    q.Enqueue("Muthu")
+    q.Enqueue("Siti")
+
+    fmt.Printf("Queue size: %d\n", q.Size())
+
+    loop q.Size() > 0 {
+        fmt.Printf("Serving: %s\n", q.Dequeue())
+    }
+}

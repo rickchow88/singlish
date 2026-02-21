@@ -1,0 +1,46 @@
+// sync.RWMutex: multiple readers, exclusive writers
+// Like a library: many can read, only one writes at a time
+kampung main
+dapao "fmt"
+dapao "sync"
+dapao "time"
+
+pattern SafeCache barang {
+    mu   sync.RWMutex
+    data menu[tar]tar
+}
+
+action (c ki SafeCache) Set(key tar, val tar) {
+    c.mu.Lock()
+    nanti c.mu.Unlock()
+    c.data[key] = val
+}
+
+action (c ki SafeCache) Get(key tar) (tar, bolehtak) {
+    c.mu.RLock()
+    nanti c.mu.RUnlock()
+    got v, ok = c.data[key]
+    balek v, ok
+}
+
+action boss() {
+    got cache = &SafeCache{
+        data: buat(menu[tar]tar),
+    }
+
+    // Write once
+    cache.Set("hawker", "Tiong Bahru")
+
+    // Multiple concurrent reads
+    got wg sync.WaitGroup
+    loop i := 0; i < 5; i++ {
+        wg.Add(1)
+        chiong action(n nombor) {
+            nanti wg.Done()
+            time.Sleep(10 * time.Millisecond)
+            got v, _ = cache.Get("hawker")
+            fmt.Printf("Reader %d got: %s\n", n, v)
+        }(i)
+    }
+    wg.Wait()
+}

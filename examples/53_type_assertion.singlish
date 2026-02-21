@@ -1,0 +1,24 @@
+// Type assertion and type switch
+// 'see_how' is switch, using .(type) for dynamic type inspection
+kampung main
+dapao "fmt"
+
+action whatIsIt(i interface{}) {
+    see_how v := i.(type) {
+    say int:
+        fmt.Printf("Wah nombor sia: %d\n", v)
+    say string:
+        fmt.Printf("Wah tar sia: %s\n", v)
+    say bool:
+        fmt.Printf("Wah bolehtak sia: %v\n", v)
+    anyhow:
+        fmt.Printf("Blur lah, dunno what: %T\n", v)
+    }
+}
+
+action boss() {
+    whatIsIt(42)
+    whatIsIt("hello lah")
+    whatIsIt(true)
+    whatIsIt(3.14)
+}

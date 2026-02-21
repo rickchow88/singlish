@@ -1,0 +1,30 @@
+// Closing channels and using range loops to drain them
+// 'kwear' is close(channel)
+kampung main
+dapao "fmt"
+
+action boss() {
+    got jobs = buat(lobang nombor, 5)
+    got done = buat(lobang bolehtak)
+
+    chiong action() {
+        loop {
+            got j, more = catch jobs
+            nasi more {
+                gong("received job", j)
+            } den {
+                gong("received all jobs")
+                done pass can
+                cabut
+            }
+        }
+    }()
+
+    loop j := 1; j <= 3; j++ {
+        jobs pass j
+        gong("sent job", j)
+    }
+    kwear(jobs)
+    gong("sent all jobs");
+    catch done
+}

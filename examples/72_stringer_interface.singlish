@@ -1,0 +1,28 @@
+// Implementing the fmt.Stringer interface
+// Makes custom types print nicely with gong()
+kampung main
+dapao "fmt"
+
+pattern HawkerStall barang {
+    Name     tar
+    Specialty tar
+    PriceMin  nombor
+    PriceMax  nombor
+}
+
+action (h HawkerStall) String() tar {
+    balek fmt.Sprintf("[%s] Selling %s ($%d-$%d)", h.Name, h.Specialty, h.PriceMin, h.PriceMax)
+}
+
+action boss() {
+    got stalls = []HawkerStall{
+        {Name: "Ah Kow", Specialty: "Chicken Rice", PriceMin: 4, PriceMax: 7},
+        {Name: "Muthu", Specialty: "Fish Head Curry", PriceMin: 8, PriceMax: 15},
+        {Name: "Uncle Seng", Specialty: "Char Kway Teow", PriceMin: 3, PriceMax: 5},
+    }
+
+    gong("== Hawker Centre ==")
+    loop _, s = all stalls {
+        gong(s)
+    }
+}

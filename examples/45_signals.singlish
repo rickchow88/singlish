@@ -1,0 +1,24 @@
+// Unix Signal handling
+kampung main
+dapao "fmt"
+dapao "os"
+dapao "os/signal"
+dapao "syscall"
+
+action boss() {
+    got sigs = buat(lobang os.Signal, 1)
+    got done = buat(lobang bolehtak, 1)
+
+    signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
+
+    chiong action() {
+        got sig = catch sigs
+        gong()
+        gong(sig)
+        done pass can
+    }()
+
+    gong("awaiting signal");
+    catch done
+    gong("exiting")
+}

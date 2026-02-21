@@ -1,0 +1,25 @@
+// Method sets: Pointer vs Value receivers
+kampung main
+dapao "fmt"
+
+pattern T barang {
+    val nombor
+}
+
+action (t T) ValueMethod() {
+    gong("Value Method:", t.val)
+}
+
+action (t ki T) PointerMethod() {
+    gong("Pointer Method:", t.val)
+}
+
+action boss() {
+    got t = T{val: 42}
+    t.ValueMethod()
+    t.PointerMethod()
+
+    got tp = &T{val: 100}
+    tp.ValueMethod()
+    tp.PointerMethod()
+}

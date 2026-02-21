@@ -1,0 +1,38 @@
+// Interface embedding and composition
+kampung main
+dapao "fmt"
+
+pattern Reader kaki {
+    Read() tar
+}
+
+pattern Writer kaki {
+    Write(s tar)
+}
+
+// Manual embedding since automatic interface embedding might not be supported
+pattern ReadWriter kaki {
+    Read() tar
+    Write(s tar)
+}
+
+pattern MyStruct barang {
+    data tar
+}
+
+action (m ki MyStruct) Read() tar {
+    balek m.data
+}
+
+action (m ki MyStruct) Write(s tar) {
+    m.data = s
+}
+
+action boss() {
+    got ms = &MyStruct{data: "original"}
+    got rw ReadWriter = ms
+
+    gong("Initial:", rw.Read())
+    rw.Write("updated")
+    gong("After write:", rw.Read())
+}

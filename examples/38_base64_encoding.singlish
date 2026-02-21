@@ -1,0 +1,14 @@
+// Base64 encoding and decoding
+kampung main
+dapao "fmt"
+dapao "encoding/base64"
+
+action boss() {
+    got data = "Wait, base64 is cheem or not?"
+    
+    got sEnc = base64.StdEncoding.EncodeToString([]byte(data))
+    gong("Encoded:", sEnc)
+    
+    got sDec, _ = base64.StdEncoding.DecodeString(sEnc)
+    gong("Decoded:", string(sDec))
+}

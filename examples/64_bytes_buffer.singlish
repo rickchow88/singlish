@@ -1,0 +1,24 @@
+// bytes.Buffer for byte-level operations
+kampung main
+dapao "fmt"
+dapao "bytes"
+
+action boss() {
+    got buf bytes.Buffer
+
+    // Write to buffer
+    buf.WriteString("Kopi ")
+    buf.WriteString("O ")
+    buf.WriteString("Kosong")
+
+    gong("Buffer:", buf.String())
+    fmt.Printf("Bytes: %v\n", buf.Bytes())
+    fmt.Printf("Length: %d\n", buf.Len())
+
+    // Reset and reuse
+    buf.Reset()
+    loop i := 0; i < 5; i++ {
+        fmt.Fprintf(&buf, "item%d ", i)
+    }
+    gong("After reset:", buf.String())
+}

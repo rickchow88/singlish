@@ -1,3 +1,5 @@
+// Pointer usage and dereferencing
+// 'ki' represents the pointer type/operator (*)
 kampung main
 dapao "fmt"
 

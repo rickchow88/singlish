@@ -1,0 +1,36 @@
+// Struct composition and Interface satisfaction
+kampung main
+dapao "fmt"
+
+pattern Base barang {
+    num nombor
+}
+
+action (b ki Base) Describe() tar {
+    balek fmt.Sprintf("Base with num=%v", b.num)
+}
+
+pattern Container barang {
+    b Base
+    s tar
+}
+
+pattern Describer kaki {
+    Describe() tar
+}
+
+action boss() {
+    got co = Container{
+        b: Base{
+            num: 1,
+        },
+        s: "some name",
+    }
+
+    fmt.Printf("co={num: %v, s: %v}\n", co.b.num, co.s)
+    gong("also num:", co.b.num)
+    gong("describe:", co.b.Describe())
+
+    got d Describer = &co.b
+    gong("describer:", d.Describe())
+}

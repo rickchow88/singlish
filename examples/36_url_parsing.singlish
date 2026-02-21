@@ -1,0 +1,20 @@
+// URL parsing and query parameter extraction
+kampung main
+dapao "fmt"
+dapao "net/url"
+
+action boss() {
+    got s = "postgres://user:pass@host.com:5432/path?k=v#f"
+    
+    got u, _ = url.Parse(s)
+    
+    gong("Scheme:", u.Scheme)
+    gong("User:  ", u.User)
+    gong("Host:  ", u.Host)
+    gong("Path:  ", u.Path)
+    gong("RawQuery:", u.RawQuery)
+    gong("Fragment:", u.Fragment)
+
+    got m, _ = url.ParseQuery(u.RawQuery)
+    gong("Query Params:", m)
+}

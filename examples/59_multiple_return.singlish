@@ -1,0 +1,26 @@
+// Multiple return values
+// 'salah' is error type, 'kosong' is nil, 'point' is float64
+kampung main
+dapao "fmt"
+dapao "errors"
+
+action divide(a point, b point) (point, salah) {
+    nasi b == 0.0 {
+        balek 0, errors.New("eh, cannot divide by zero lah!")
+    }
+    balek a / b, kosong
+}
+
+action boss() {
+    got result, err = divide(10.0, 3.0)
+    nasi err != kosong {
+        gong("Error:", err)
+    } den {
+        fmt.Printf("10 / 3 = %.4f\n", result)
+    }
+
+    got _, err2 = divide(5.0, 0.0)
+    nasi err2 != kosong {
+        gong("Error caught:", err2)
+    }
+}

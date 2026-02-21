@@ -1,0 +1,45 @@
+// Composite literals: build complex values inline
+kampung main
+dapao "fmt"
+
+pattern Address barang {
+    Street tar
+    Unit   tar
+    Postal tar
+}
+
+pattern Person barang {
+    Name    tar
+    Age     nombor
+    Address Address
+    Hobbies []tar
+}
+
+action boss() {
+    // Composite literal with nested struct and slice
+    got p = Person{
+        Name: "Ah Beng",
+        Age:  30,
+        Address: Address{
+            Street: "Orchard Road",
+            Unit:   "#01-23",
+            Postal: "238801",
+        },
+        Hobbies: []tar{"makan", "lepak", "karaoke"},
+    }
+
+    fmt.Printf("Name: %s, Age: %d\n", p.Name, p.Age)
+    fmt.Printf("Lives at: %s %s, Singapore %s\n", p.Address.Street, p.Address.Unit, p.Address.Postal)
+    gong("Hobbies:", p.Hobbies)
+
+    // Map literal
+    got hawkerPrices = menu[tar]nombor{
+        "Laksa":        6,
+        "Chicken Rice": 5,
+        "Nasi Lemak":   4,
+    }
+
+    loop food, price = all hawkerPrices {
+        fmt.Printf("%s: $%d\n", food, price)
+    }
+}

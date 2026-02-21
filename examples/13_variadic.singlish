@@ -1,3 +1,6 @@
+// Demonstrating variadic functions
+// 'action' defines a function, 'nombor' is int
+// 'all' is used for 'range'
 kampung main
 dapao "fmt"
 

@@ -1,0 +1,21 @@
+// Working with Timers
+kampung main
+dapao "fmt"
+dapao "time"
+
+action boss() {
+    got timer1 = time.NewTimer(2 * time.Second);
+
+    catch timer1.C
+    gong("Timer 1 expired")
+
+    got timer2 = time.NewTimer(time.Second)
+    chiong action() {
+        catch timer2.C
+        gong("Timer 2 expired")
+    }()
+    got stop2 = timer2.Stop()
+    nasi stop2 {
+        gong("Timer 2 stopped")
+    }
+}

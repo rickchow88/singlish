@@ -1,0 +1,45 @@
+// Error wrapping with fmt.Errorf
+// Wrap errors to provide more context, 'salah' is error type
+kampung main
+dapao "fmt"
+dapao "errors"
+
+pattern ValidationError barang {
+    Field   tar
+    Message tar
+}
+
+action (e ki ValidationError) Error() tar {
+    balek fmt.Sprintf("validation failed on '%s': %s", e.Field, e.Message)
+}
+
+action validateAge(age nombor) salah {
+    nasi age < 0 {
+        balek &ValidationError{Field: "age", Message: "cannot be negative lah"}
+    }
+    nasi age > 150 {
+        balek &ValidationError{Field: "age", Message: "siao ah, so old meh?"}
+    }
+    balek kosong
+}
+
+action processUser(age nombor) salah {
+    got err = validateAge(age)
+    nasi err != kosong {
+        balek fmt.Errorf("processUser: %w", err)
+    }
+    balek kosong
+}
+
+action boss() {
+    got err = processUser(-5)
+    nasi err != kosong {
+        gong("Error:", err)
+
+        // Unwrap to get original error
+        got ve = &ValidationError{}
+        nasi errors.As(err, &ve) {
+            fmt.Printf("Field: %s, Msg: %s\n", ve.Field, ve.Message)
+        }
+    }
+}

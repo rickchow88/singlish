@@ -1,0 +1,45 @@
+// Stack data structure implementation
+// LIFO - Last In First Out
+kampung main
+dapao "fmt"
+
+pattern Stack barang {
+    items []nombor
+}
+
+action (s ki Stack) Push(v nombor) {
+    s.items = upsize(s.items, v)
+}
+
+action (s ki Stack) Pop() nombor {
+    nasi count(s.items) == 0 {
+        balek -1
+    }
+    got last = s.items[count(s.items)-1]
+    s.items = s.items[:count(s.items)-1]
+    balek last
+}
+
+action (s Stack) Peek() nombor {
+    nasi count(s.items) == 0 {
+        balek -1
+    }
+    balek s.items[count(s.items)-1]
+}
+
+action (s Stack) IsEmpty() bolehtak {
+    balek count(s.items) == 0
+}
+
+action boss() {
+    got s = &Stack{}
+    s.Push(10)
+    s.Push(20)
+    s.Push(30)
+
+    fmt.Printf("Top: %d\n", s.Peek())
+
+    loop !s.IsEmpty() {
+        fmt.Printf("Popped: %d\n", s.Pop())
+    }
+}

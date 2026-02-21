@@ -1,0 +1,20 @@
+// Package init function
+// Runs automatically before boss() (main)
+kampung main
+dapao "fmt"
+
+got appVersion tar
+got startupMsg tar
+
+// init() is called automatically before main
+action init() {
+    appVersion = "v1.2.3"
+    startupMsg = "Eh, system starting up ah!"
+    gong("init() called, setting up...")
+}
+
+action boss() {
+    gong("boss() called")
+    fmt.Printf("App Version: %s\n", appVersion)
+    gong(startupMsg)
+}

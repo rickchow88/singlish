@@ -1,0 +1,22 @@
+// Buffered channels (lobang with capacity)
+// Can send without a receiver ready, up to buffer size
+kampung main
+dapao "fmt"
+
+action boss() {
+    // Buffered channel with capacity 3
+    // 'buat(lobang tar, 3)' is make(chan string, 3)
+    got ch = buat(lobang tar, 3)
+
+    // Can send without blocking (up to buffer size)
+    ch pass "first"
+    ch pass "second"
+    ch pass "third"
+
+    gong("Sent 3 messages, channel has", count(ch), "items")
+
+    // Receive them
+    gong(catch ch)
+    gong(catch ch)
+    gong(catch ch)
+}

@@ -1,3 +1,5 @@
+// File writing example
+// 'salah' is error type, 'kosong' is nil
 kampung main
 dapao "fmt"
 dapao "os"

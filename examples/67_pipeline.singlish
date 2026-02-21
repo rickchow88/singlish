@@ -1,0 +1,39 @@
+// Goroutine pipeline pattern
+// Data flows through stages like an assembly line
+kampung main
+dapao "fmt"
+
+// Stage 1: generate numbers
+action generate(nums ...nombor) lobang nombor {
+    got out = buat(lobang nombor)
+    chiong action() {
+        loop _, n = all nums {
+            out pass n
+        }
+        kwear(out)
+    }()
+    balek out
+}
+
+// Stage 2: square each number
+action square(in lobang nombor) lobang nombor {
+    got out = buat(lobang nombor)
+    chiong action() {
+        loop n = all in {
+            out pass n * n
+        }
+        kwear(out)
+    }()
+    balek out
+}
+
+action boss() {
+    // Set up pipeline: generate -> square
+    got c = generate(2, 3, 4, 5, 6)
+    got out = square(c)
+
+    // Consume the output
+    loop v = all out {
+        gong(v)
+    }
+}

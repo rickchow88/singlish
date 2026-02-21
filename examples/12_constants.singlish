@@ -1,6 +1,9 @@
 kampung main
 dapao "fmt"
 
+// Demonstrating constants in Singlish
+// 'confirm' is used for 'const' (Fixed value, confirm plus chop)
+
 // Constants
 const Pi = 3.14159
 const AppName = "Singlish"

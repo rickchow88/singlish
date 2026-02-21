@@ -1,0 +1,38 @@
+// Common map patterns: grouping, counting, sets
+kampung main
+dapao "fmt"
+dapao "sort"
+
+action boss() {
+    got words = []tar{"laksa", "kopi", "laksa", "teh", "kopi", "kopi", "milo"}
+
+    // Word frequency count
+    got freq = buat(menu[tar]nombor)
+    loop _, w = all words {
+        freq[w]++
+    }
+    gong("Word frequencies:")
+    loop k, v = all freq {
+        fmt.Printf("  %-8s: %d\n", k, v)
+    }
+
+    // Using map as a set (deduplicate)
+    got seen = buat(menu[tar]bolehtak)
+    got unique []tar
+    loop _, w = all words {
+        nasi !seen[w] {
+            seen[w] = can
+            unique = upsize(unique, w)
+        }
+    }
+    sort.Strings(unique)
+    gong("Unique words:", unique)
+
+    // Invert a map
+    got original = menu[tar]nombor{"one": 1, "two": 2, "three": 3}
+    got inverted = buat(menu[nombor]tar)
+    loop k, v = all original {
+        inverted[v] = k
+    }
+    gong("Inverted map:", inverted)
+}

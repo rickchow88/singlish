@@ -1,0 +1,12 @@
+// Working with custom errors
+kampung main
+dapao "fmt"
+dapao "errors"
+
+action boss() {
+    got err = errors.New("something went wrong liao")
+    
+    nasi err != kosong {
+        gong("Error detected:", err)
+    }
+}
