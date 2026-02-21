@@ -1,13 +1,21 @@
 # Singlish 🇸🇬
 
-Singlish is a powerful and expressive programming language that brings the vibrant spirit of Singapore to the world of software development. Built as a Go-based transpiler, it allows you to write high-performance applications using familiar Singaporean colloquialisms.
+Singlish is a culturally authentic, high-performance programming language designed for the vibrant spirit of Singapore. Built as a sophisticated **Go-based transpiler**, it allows developers to build scalable, production-ready systems using the familiar colloquialisms of the little red dot.
+
+## Why Singlish?
+
+- **🚀 Performance without Compromise**: Every Singlish line compiles 1:1 into optimized Go code. You get the speed of Go with the expressiveness of a Kopitiam conversation.
+- **🚥 Concurrency as Nature Intended**: Spin up goroutines with `chiong` and manage communication through `lobang` (channels). Built-in support for `pass` and `catch` semantics makes async logic feel like a breeze.
+- **😤 The "Kena Scold" Error System**: Tired of polite, cryptic compilers? Singlish gives it to you straight. If you code like a *sotong*, our "Insult Engine" will let you know in authentic Singlish diagnostics (e.g., *"Wake up your idea"*, *"Eh bodoh"*, *"Catch no ball sia"*, or *"Simi sai is this?"*).
+- **📦 Go Interop**: Effortlessly use any standard Go library or third-party package. `dapao` (import) what you need and start coding.
+- **🇸🇬 Localized Semantics**: From `kampung` (packages) to `boss` (main entry point), the language maps logical programming concepts to clear Singaporean metaphors.
 
 ## 🛠 Prerequisites
 
 Before you start, ensure you have the following installed:
 
-* **Go** (v1.21 or later) — [Install Go](https://go.dev/doc/install)
-* **Git**
+- **Go** (v1.21 or later) — [Install Go](https://go.dev/doc/install)
+- **Git**
 
 ## 🚀 Installation & Setup
 
@@ -34,20 +42,33 @@ To install the Singlish CLI tool (`singlish`), follow these steps:
 
 ## 🏃 Running the Examples
 
-The repository includes a variety of examples in the `examples/` directory.
+The repository includes a variety of examples in the `examples/` directory. Here are three to get you started:
 
-To run an example (e.g., the classic "Hello World"):
+### 1. Hello World (The Classic)
+
+A simple demonstration of `kampung`, `action boss`, and `gong`.
 
 ```bash
-./singlish run examples/hello.singlish
+./singlish run examples/01_hello_world.singlish
 ```
 
-### Try these other examples
+### 2. FizzBuzz (Logic & Loops)
 
-* **Math Operations**: `./singlish run examples/05_operators.singlish`
-* **Goroutines**: `./singlish run examples/16_goroutines.singlish`
-* **Channels**: `./singlish run examples/17_channels.singlish`
-* **Timeout Context**: `./singlish run examples/29_context_timeout.singlish`
+Shows off `loop`, `nasi`, and `den` logic.
+
+```bash
+./singlish run examples/02_fizzbuzz.singlish
+```
+
+### 3. Goroutines (Concurrency)
+
+Watch how Singlish handles `chiong` and `lobang` for high-performance concurrency.
+
+```bash
+./singlish run examples/16_goroutines.singlish
+```
+
+> Browse the [full list of 80+ examples here](#-examples-first-50).
 
 ## 📖 Language Reference
 
@@ -106,7 +127,7 @@ To run an example (e.g., the classic "Hello World"):
 | `dun` | `!` | Logical NOT |
 | `or` | `\|\|` | Logical OR |
 
-> **Note**: If your code contains errors, the compiler will provide feedback in the form of authentic Singlish diagnostics (e.g., *"Wake up your idea"* or *"Blur like sotong"*).
+> **Note**: If your code contains errors, the compiler will provide feedback in the form of authentic Singlish diagnostics (e.g., *"Wake up your idea"*, *"Blur like sotong"*, *"Eh bodoh"*, *"Catch no ball sia"*, or *"Simi sai is this?"*).
 
 ## 📂 Examples (First 50)
 
