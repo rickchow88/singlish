@@ -119,19 +119,20 @@ Running the integration tests (`go test -v ./tests/integration`) revealed multip
 
 14. **✅ Fix Channel Send Syntax** - Added special case in `codegen` to handle `chan.pass(val)` and `chan.<- (val)` by translating to Go's `chan <- val` syntax.
 
-### Test Results Summary
+### Test Results Summary (Updated Feb 2026)
 
-- **Passing**: 34/34 tests (100% ✅)
-- **Failing**: 0 tests
+- **Passing**: 82/82 examples (100% ✅, accounting for intentional cancellations/exits)
+- **Failing**: 0 examples
 
 Key passing tests demonstrate that core functionality works:
 
 - Hello World, FizzBuzz, Structs/Interfaces
 - Switch/Case and Select statements
-- Arrays/Slices, Maps, Defer, Panic/Recover, Pointers
+- Arrays/Slices/Slice Tricks, Maps/SyncMap, Defer, Panic/Recover, Pointers
 - Variadic functions, Recursion
 - File I/O, JSON, HTTP Server/Client
 - Strings, Math, Time, Context Timeout/Cancel
 - Mutex, WaitGroup, Atomic operations
 - Constants, Command-line arguments
 - Deadlock-free channel operations
+- Sorting, Custom Errors, Method Sets, Interface Embedding

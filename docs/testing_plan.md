@@ -42,20 +42,8 @@ go test -v ./tests/integration
 
 ## Current Status (As of Jan 2026)
 
-The following examples are passing:
+All scripts passed `run_all.go` execution locally, except for a few instances:
 
-- 01_hello_world.singlish
-- 03_coffee_shop_queue.singlish
-- 04_structs_and_interfaces.singlish
-- 08_defer.singlish
-- 10_panic_recover.singlish
-- 19_http_server.singlish
-- 26_mutex.singlish
-- 27_waitgroup.singlish
-- 28_atomic.singlish
-- debug_pass.singlish
-- hello.singlish
-
-Other examples are currently failing and require fixes in the transpiler.
-
-run all singlish scripts in /examples and fix errors, run 1 test at a time directly from the terminal, list all that fail test after fix
+- `30_context_cancel.singlish` (TIMEOUT by design)
+- `45_signals.singlish` (TIMEOUT by design)
+- `46_exit.singlish` (ERROR status 3 by design)
