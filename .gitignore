@@ -5,3 +5,17 @@ node_modules/
 **/node_modules/
 **/.DS_Store
 docs/SINGLISH-Based-on-CURSED-1.md
+
+# Go build
+bin/singlish
+/singlish
+*.log
+
+# Env
+.env
+.env.*
+
+# Temp
+.tmp/
+coverage/
+dist/

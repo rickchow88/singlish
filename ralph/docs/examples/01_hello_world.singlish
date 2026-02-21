@@ -1,5 +1,0 @@
-kampung main
-
-action boss() {
-    gong("Hello World")
-}
