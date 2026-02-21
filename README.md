@@ -6,44 +6,49 @@ Singlish is a powerful and expressive programming language that brings the vibra
 
 Before you start, ensure you have the following installed:
 
-*   **Go** (v1.21 or later) — [Install Go](https://go.dev/doc/install)
-*   **Git**
+* **Go** (v1.21 or later) — [Install Go](https://go.dev/doc/install)
+* **Git**
 
 ## 🚀 Installation & Setup
 
 To install the Singlish CLI tool (`singlish`), follow these steps:
 
-1.  **Clone the repository**:
+1. **Clone the repository**:
+
     ```bash
     git clone https://github.com/rickchow88/singlish.git
     cd singlish
     ```
 
-2.  **Build the CLI**:
+2. **Build the CLI**:
+
     ```bash
     cd ralph
     go build -o singlish main.go
     ```
 
-3.  **Verify the installation**:
+3. **Verify the installation**:
+
     ```bash
     ./singlish --help
     ```
 
 ## 🏃 Running the Examples
 
-The repository includes a variety of examples in the `docs/examples/` directory.
+The repository includes a variety of examples in the `examples/` directory.
 
 To run an example (e.g., the classic "Hello World"):
+
 ```bash
-./ralph/singlish run docs/examples/hello.singlish
+./ralph/singlish run examples/hello.singlish
 ```
 
-### Try these other examples:
-*   **Math Operations**: `./ralph/singlish run docs/examples/05_operators.singlish`
-*   **Goroutines**: `./ralph/singlish run docs/examples/16_goroutines.singlish`
-*   **Channels**: `./ralph/singlish run docs/examples/17_channels.singlish`
-*   **Timeout Context**: `./ralph/singlish run docs/examples/29_context_timeout.singlish`
+### Try these other examples
+
+* **Math Operations**: `./ralph/singlish run examples/05_operators.singlish`
+* **Goroutines**: `./ralph/singlish run examples/16_goroutines.singlish`
+* **Channels**: `./ralph/singlish run examples/17_channels.singlish`
+* **Timeout Context**: `./ralph/singlish run examples/29_context_timeout.singlish`
 
 ## 📖 Language Reference
 
@@ -64,9 +69,9 @@ To run an example (e.g., the classic "Hello World"):
 
 This project uses the **Ralph** agent loop for autonomous development. If you are a developer contributor:
 
-1.  Navigate to the `ralph` directory.
-2.  Install dependencies: `npm install`.
-3.  Run a build iteration: `ralph build 1`.
+1. Navigate to the `ralph` directory.
+2. Install dependencies: `npm install`.
+3. Run a build iteration: `ralph build 1`.
 
 ---
 *Made with ❤️ in Singapore.*
