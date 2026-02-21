@@ -55,4 +55,4 @@ The user wants to rename the entry point function name from `main` to `boss` acr
 ## 4. Verification Steps
 
 - [ ] Run `grep -r "action main" .` to ensure zero matches in `.singlish` files.
-- [ ] Run `singlish run docs/examples/01_hello_world.singlish` and verify output.
+- [ ] Run `singlish run examples/01_hello_world.singlish` and verify output.

@@ -79,9 +79,9 @@ The goal is to build the `singlish` CLI tool. This tool handles the entire lifec
 
 - [ ] **Task 5.1**: **Unit Tests**: Test individual keyword translations (e.g., input `nasi` -> output `if`).
 - [ ] **Task 5.2**: **Integration Tests**:
-  - Transpile and run `docs/examples/01_hello_world.singlish`.
-  - Transpile and run `docs/examples/02_fizzbuzz.singlish`.
-  - Transpile and run `docs/examples/11_pointers.singlish` (Verify `ki` logic).
+  - Transpile and run `examples/01_hello_world.singlish`.
+  - Transpile and run `examples/02_fizzbuzz.singlish`.
+  - Transpile and run `examples/11_pointers.singlish` (Verify `ki` logic).
 - [ ] **Task 5.3**: **Chaos Test**: Feed invalid code to ensure the Insult Engine fires correctly.
 
 ## 5. Keyword Reference (Source of Truth)
