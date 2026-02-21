@@ -72,8 +72,6 @@ Watch how Singlish handles `chiong` and `lobang` for high-performance concurrenc
 
  run all singlish scripts in /examples and fix errors, run 1 test at a time directly from the terminal
 
-> Browse the [full list of 80+ examples here](#-examples-first-50).
-
 ## 📖 Language Reference
 
 | Singlish Keyword | Go Equivalent | Concept |
@@ -189,6 +187,8 @@ Explore all [80+ examples here](/examples).
 50. [50_select_with_default.singlish](/examples/50_select_with_default.singlish)
 
 ---
+
+> Browse the [full list of 80+ examples here](#-examples-first-50).
 
 ## 🤖 Development Loop (Ralph)
 
