@@ -15,6 +15,8 @@ const (
 	LOWEST
 	ASSIGN      // = or :=
 	SEND        // <-
+	LOGICAL_OR  // ||
+	LOGICAL_AND // &&
 	EQUALS      // ==
 	LESSGREATER // > or <
 	SUM         // +
@@ -43,8 +45,8 @@ var precedence = map[string]int{
 	">":  LESSGREATER,
 	"<=": LESSGREATER,
 	">=": LESSGREATER,
-	"&&": PRODUCT, // Should be logical AND
-	"||": SUM,     // Should be logical OR
+	"&&": LOGICAL_AND, // Should be logical AND
+	"||": LOGICAL_OR,  // Should be logical OR
 	"+":  SUM,
 	"-":  SUM,
 	"*":  PRODUCT,
@@ -1463,26 +1465,44 @@ func (p *Parser) parseFunctionParameters() []*ast.FieldDefinition {
 
 	p.nextToken()
 
-	nameTok := p.curToken
-	ident := &ast.FieldDefinition{
-		Name: &ast.Identifier{Token: nameTok, Value: nameTok.Value},
-		Type: p.parseTypeExpression(),
-	}
-	identifiers = append(identifiers, ident)
-
-	for p.peekTokenIs(lexer.TokenPunctuation) && p.peekToken.Value == "," {
-		p.nextToken()
-		p.nextToken()
+	for {
 		nameTok := p.curToken
+
 		ident := &ast.FieldDefinition{
 			Name: &ast.Identifier{Token: nameTok, Value: nameTok.Value},
-			Type: p.parseTypeExpression(),
 		}
+
+		if p.peekTokenIs(lexer.TokenPunctuation) && (p.peekToken.Value == "," || p.peekToken.Value == ")") {
+			ident.Type = nil
+		} else {
+			ident.Type = p.parseTypeExpression()
+		}
+
 		identifiers = append(identifiers, ident)
+
+		if p.peekTokenIs(lexer.TokenPunctuation) && p.peekToken.Value == "," {
+			p.nextToken() // move to ','
+			p.nextToken() // move to next identifier
+		} else {
+			break
+		}
 	}
 
 	if !p.expectPeek(lexer.TokenPunctuation, ")") {
 		return nil
+	}
+
+	// Backtrack to apply types to grouped parameters
+	var lastType ast.Expression
+	for i := len(identifiers) - 1; i >= 0; i-- {
+		if identifiers[i].Type != nil {
+			lastType = identifiers[i].Type
+		} else if lastType != nil {
+			identifiers[i].Type = lastType
+		} else {
+			identifiers[i].Type = identifiers[i].Name
+			identifiers[i].Name = nil
+		}
 	}
 
 	return identifiers
