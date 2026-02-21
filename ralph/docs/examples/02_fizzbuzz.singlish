@@ -1,0 +1,15 @@
+kampung main
+
+action boss() {
+    for i := 1; i <= 15; i++ {
+        nasi i % 15 == 0 {
+            gong("FizzBuzz")
+        } else nasi i % 3 == 0 {
+            gong("Fizz")
+        } else nasi i % 5 == 0 {
+            gong("Buzz")
+        } else {
+            gong(i)
+        }
+    }
+}
