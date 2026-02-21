@@ -622,7 +622,9 @@ func (cl *CompositeLiteral) expressionNode()      {}
 func (cl *CompositeLiteral) TokenLiteral() string { return cl.Token.Value }
 func (cl *CompositeLiteral) String() string {
 	var out bytes.Buffer
-	out.WriteString(cl.Type.String())
+	if cl.Type != nil {
+		out.WriteString(cl.Type.String())
+	}
 	out.WriteString("{")
 	args := []string{}
 	for _, el := range cl.Elements {
@@ -723,5 +725,30 @@ func (tae *TypeAssertionExpression) String() string {
 	out.WriteString(".(")
 	out.WriteString(tae.Type.String())
 	out.WriteString(")")
+	return out.String()
+}
+
+// SliceExpression represents a slice expression (e.g. array[i:] or array[i:j]).
+type SliceExpression struct {
+	Token lexer.Token // The '[' token
+	Left  Expression
+	Low   Expression // Can be nil
+	High  Expression // Can be nil
+}
+
+func (se *SliceExpression) expressionNode()      {}
+func (se *SliceExpression) TokenLiteral() string { return se.Token.Value }
+func (se *SliceExpression) String() string {
+	var out bytes.Buffer
+	out.WriteString(se.Left.String())
+	out.WriteString("[")
+	if se.Low != nil {
+		out.WriteString(se.Low.String())
+	}
+	out.WriteString(":")
+	if se.High != nil {
+		out.WriteString(se.High.String())
+	}
+	out.WriteString("]")
 	return out.String()
 }

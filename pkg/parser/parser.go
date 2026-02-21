@@ -878,6 +878,10 @@ func (p *Parser) parseGroupedExpression() ast.Expression {
 		return &ast.Identifier{Token: p.curToken, Value: "[]" + elemType.Value}
 	}
 
+	if p.curToken.Value == "{" {
+		return p.parseCompositeLiteral(nil)
+	}
+
 	if p.curToken.Value != "(" {
 		return nil
 	}
@@ -921,19 +925,69 @@ func (p *Parser) parseCallOrGroupExpression(left ast.Expression) ast.Expression 
 }
 
 func (p *Parser) parseIndexExpression(left ast.Expression) ast.Expression {
-	exp := &ast.IndexExpression{
-		Token: p.curToken,
-		Left:  left,
+	tok := p.curToken
+
+	// Check if it's an empty slice a[:] or a[:x]
+	if p.peekTokenIs(lexer.TokenPunctuation) && p.peekToken.Value == ":" {
+		p.nextToken() // move to ':'
+		se := &ast.SliceExpression{
+			Token: tok,
+			Left:  left,
+		}
+		// Is high bound empty? a[:]
+		if p.peekTokenIs(lexer.TokenPunctuation) && p.peekToken.Value == "]" {
+			if !p.expectPeek(lexer.TokenPunctuation, "]") {
+				return nil
+			}
+			return se
+		}
+		// Otherwise, parse high bound
+		p.nextToken() // move to start of high
+		se.High = p.parseExpression(LOWEST)
+		if !p.expectPeek(lexer.TokenPunctuation, "]") {
+			return nil
+		}
+		return se
 	}
 
-	p.nextToken() // skip [
-	exp.Index = p.parseExpression(LOWEST)
+	// We have a low bound or an exact index
+	p.nextToken() // move to start of expression
+	indexOrLow := p.parseExpression(LOWEST)
 
+	if p.peekTokenIs(lexer.TokenPunctuation) && p.peekToken.Value == ":" {
+		// It's a slice expression
+		se := &ast.SliceExpression{
+			Token: tok,
+			Left:  left,
+			Low:   indexOrLow,
+		}
+		p.nextToken() // move to ':'
+		if p.peekTokenIs(lexer.TokenPunctuation) && p.peekToken.Value == "]" {
+			// a[x:]
+			if !p.expectPeek(lexer.TokenPunctuation, "]") {
+				return nil
+			}
+			return se
+		}
+		// a[x:y]
+		p.nextToken() // move to start of high
+		se.High = p.parseExpression(LOWEST)
+		if !p.expectPeek(lexer.TokenPunctuation, "]") {
+			return nil
+		}
+		return se
+	}
+
+	// It's just an index expression
 	if !p.expectPeek(lexer.TokenPunctuation, "]") {
 		return nil
 	}
 
-	return exp
+	return &ast.IndexExpression{
+		Token: tok,
+		Left:  left,
+		Index: indexOrLow,
+	}
 }
 
 func (p *Parser) parseCompositeLiteral(left ast.Expression) ast.Expression {

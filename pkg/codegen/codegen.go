@@ -219,6 +219,17 @@ func (g *generator) inspect(node ast.Node) {
 		}
 		g.inspect(n.Left)
 		g.inspect(n.Type)
+	case *ast.SliceExpression:
+		if n == nil {
+			return
+		}
+		g.inspect(n.Left)
+		if n.Low != nil {
+			g.inspect(n.Low)
+		}
+		if n.High != nil {
+			g.inspect(n.High)
+		}
 	}
 }
 
@@ -319,6 +330,8 @@ func (g *generator) visit(node ast.Node) {
 		g.visitDeferStatement(n)
 	case *ast.IndexExpression:
 		g.visitIndexExpression(n)
+	case *ast.SliceExpression:
+		g.visitSliceExpression(n)
 	case *ast.TypeAssertionExpression:
 		g.visitExpression(n.Left)
 		g.write(".(")
@@ -543,7 +556,9 @@ func (g *generator) visitExpression(expr ast.Expression) {
 	case *ast.IncDecStatement:
 		g.visitIncDecStatement(e)
 	case *ast.CompositeLiteral:
-		g.visitExpression(e.Type)
+		if e.Type != nil {
+			g.visitExpression(e.Type)
+		}
 		g.write("{")
 		for i, el := range e.Elements {
 			if i > 0 {
@@ -560,6 +575,8 @@ func (g *generator) visitExpression(expr ast.Expression) {
 		g.visitFunctionLiteral(e)
 	case *ast.IndexExpression:
 		g.visitIndexExpression(e)
+	case *ast.SliceExpression:
+		g.visitSliceExpression(e)
 	case *ast.TypeAssertionExpression:
 		g.visitExpression(e.Left)
 		g.write(".(")
@@ -745,6 +762,19 @@ func (g *generator) visitIndexExpression(exp *ast.IndexExpression) {
 	g.visitExpression(exp.Left)
 	g.write("[")
 	g.visitExpression(exp.Index)
+	g.write("]")
+}
+
+func (g *generator) visitSliceExpression(exp *ast.SliceExpression) {
+	g.visitExpression(exp.Left)
+	g.write("[")
+	if exp.Low != nil {
+		g.visitExpression(exp.Low)
+	}
+	g.write(":")
+	if exp.High != nil {
+		g.visitExpression(exp.High)
+	}
 	g.write("]")
 }
 
