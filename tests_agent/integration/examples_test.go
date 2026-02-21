@@ -29,7 +29,7 @@ func TestMain(m *testing.M) {
 	singlishBinary = filepath.Join(tempDir, exeName)
 
 	// Determine repo root from current test file location
-	// We assume test is running in tests/integration
+	// We assume test is running in tests_agent/integration
 	repoRoot, err := filepath.Abs("../../")
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to resolve repo root: %v\n", err)
@@ -53,8 +53,8 @@ func TestMain(m *testing.M) {
 }
 
 func TestExamples(t *testing.T) {
-	// Point to the root docs/examples directory (3 levels up from ralph/tests/integration)
-	examplesDir, err := filepath.Abs("../../../docs/examples")
+	// Point to the root examples directory (2 levels up from tests_agent/integration)
+	examplesDir, err := filepath.Abs("../../examples")
 	if err != nil {
 		t.Fatalf("Failed to resolve examples directory: %v", err)
 	}

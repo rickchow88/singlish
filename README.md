@@ -68,6 +68,10 @@ Watch how Singlish handles `chiong` and `lobang` for high-performance concurrenc
 ./singlish run examples/16_goroutines.singlish
 ```
 
+### 4. using AI like Antigravity,codex, gemini, Claude, etc
+
+ run all singlish scripts in /examples and fix errors, run 1 test at a time directly from the terminal
+
 > Browse the [full list of 80+ examples here](#-examples-first-50).
 
 ## 📖 Language Reference

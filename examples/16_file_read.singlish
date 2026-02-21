@@ -5,7 +5,7 @@ dapao "os"
 
 action boss() {
     // Read entire file shimple way
-    got dat, err = os.ReadFile("12_constants.singlish")
+    got dat, err = os.ReadFile("examples/12_constants.singlish")
     nasi err != kosong {
         gong("Cannot read file:", err)
         balek
