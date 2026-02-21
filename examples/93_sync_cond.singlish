@@ -1,3 +1,4 @@
+// sync.Cond usage
 kampung main
 dapao "fmt"
 dapao "sync"

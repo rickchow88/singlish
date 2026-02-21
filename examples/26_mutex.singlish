@@ -1,3 +1,4 @@
+// Mutex Locks
 kampung main
 dapao "fmt"
 dapao "sync"
