@@ -1,0 +1,11 @@
+kampung main
+dapao "fmt"
+
+// Constants
+const Pi = 3.14159
+const AppName = "Singlish"
+
+action boss() {
+    gong("Pi is:", Pi)
+    gong("App name:", AppName)
+}

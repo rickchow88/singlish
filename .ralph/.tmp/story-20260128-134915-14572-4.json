@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "total": 5,
+  "remaining": 2,
+  "quality_gates": [
+    "cd ralph && go test -v ./tests/integration"
+  ],
+  "id": "US-004",
+  "title": "Fix Standard Library Mappings"
+}

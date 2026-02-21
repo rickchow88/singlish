@@ -1,0 +1,8 @@
+kampung main
+dapao "fmt"
+
+// The main entry point (boss function)
+action boss() {
+    // Print to console using 'gong' (speak/talk)
+    gong("Hello Singapore! Limpeh is coding now.")
+}

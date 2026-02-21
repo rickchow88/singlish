@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "project": "Transpiler Fixes & Improvements",
+  "overview": "The Singlish-to-Go transpiler fails on complex control flow, specific data structures, and standard library usage. This PRD outlines the tasks required to achieve 100% pass rate on the /docs/examples integration suite.",
+  "goals": [
+    "Achieve 100% pass rate on /docs/examples integration suite",
+    "Fix critical compiler panics (P0)",
+    "Fix control flow parsing for loops and conditionals (P0)",
+    "Implement missing standard library mappings (P1)",
+    "Correct invalid test assertions (P2)"
+  ],
+  "nonGoals": [
+    "Introduction of new language features not already present in examples",
+    "Performance optimization beyond fixing crashes"
+  ],
+  "successMetrics": [
+    "100% passing tests in ralph/tests/integration/examples_test.go"
+  ],
+  "openQuestions": [],
+  "stack": {
+    "language": "Go",
+    "compiler_target": "Go",
+    "source_language": "Singlish",
+    "cli": "Cobra (assumed from file structure)"
+  },
+  "routes": [],
+  "uiNotes": [],
+  "dataModel": [],
+  "importFormat": {
+    "description": "Singlish source files",
+    "example": {
+      "extension": ".singlish",
+      "content": "boda hello world"
+    }
+  },
+  "rules": [
+    "All .singlish files in docs/examples must transpile and run successfully",
+    "Transpiled Go code must pass go vet/fmt"
+  ],
+  "qualityGates": [
+    "cd ralph && go test -v ./tests/integration"
+  ],
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "Fix Test Data Assertions",
+      "status": "done",
+      "dependsOn": [],
+      "description": "Update incorrect test expectations in the integration suite to ensure valid code passes.",
+      "acceptanceCriteria": [
+        "Update ralph/tests/integration/examples_test.go",
+        "Change expected output for 11_pointers.singlish from '100' to '60'",
+        "Verify 11_pointers.singlish passes the test suite"
+      ],
+      "startedAt": "2026-01-28T05:49:15.102416+00:00",
+      "completedAt": "2026-01-28T05:50:22.440503+00:00",
+      "updatedAt": "2026-01-28T05:50:22.440401+00:00"
+    },
+    {
+      "id": "US-002",
+      "title": "Fix Compiler Panic in Codegen (Arrays/Slices)",
+      "status": "done",
+      "dependsOn": [],
+      "description": "Prevent runtime panics in codegen.go when inspecting AST nodes for arrays and slices.",
+      "acceptanceCriteria": [
+        "Add nil checks in codegen.go inspect/visit methods",
+        "Ensure 06_arrays_slices.singlish compiles without panic",
+        "Verify no regressions in other basic tests"
+      ],
+      "startedAt": "2026-01-28T05:50:24.520071+00:00",
+      "completedAt": "2026-01-28T05:50:55.250032+00:00",
+      "updatedAt": "2026-01-28T05:50:55.249923+00:00"
+    },
+    {
+      "id": "US-003",
+      "title": "Fix Control Flow Parsing (Loops & Conditionals)",
+      "status": "done",
+      "dependsOn": [],
+      "description": "Fix parser logic for 'loop' and 'nasi' (if) statements to correctly handle blocks and conditions.",
+      "acceptanceCriteria": [
+        "Debug and fix parser.ParseIfStatement",
+        "Debug and fix parser.ParseForStatement",
+        "Verify 02_fizzbuzz.singlish transpiles and runs correctly",
+        "Verify 09_switch_case.singlish transpiles and runs correctly"
+      ],
+      "startedAt": "2026-01-28T05:50:57.322636+00:00",
+      "completedAt": "2026-01-28T05:51:29.000581+00:00",
+      "updatedAt": "2026-01-28T05:51:29.000426+00:00"
+    },
+    {
+      "id": "US-004",
+      "title": "Fix Standard Library Mappings",
+      "status": "done",
+      "dependsOn": [],
+      "description": "Update dictionary mappings to support common standard library functions used in examples.",
+      "acceptanceCriteria": [
+        "Update dictionaries/stdlib.json (or equivalent Go map)",
+        "Map strings functions (strings.ToUpper, etc.)",
+        "Map math functions (math.Max, etc.)",
+        "Map time functions (time.Now, time.Sleep)",
+        "Ensure implicit imports are generated for used packages",
+        "Verify 20_http_client.singlish, 22_strings.singlish, 23_math.singlish, 24_time.singlish pass"
+      ],
+      "startedAt": "2026-01-28T05:51:31.082578+00:00",
+      "completedAt": "2026-01-28T05:52:07.764190+00:00",
+      "updatedAt": "2026-01-28T05:52:07.764076+00:00"
+    },
+    {
+      "id": "US-005",
+      "title": "Fix Context Package Usage",
+      "status": "done",
+      "dependsOn": [],
+      "description": "Ensure the context package and cancellation functions are correctly transpiled.",
+      "acceptanceCriteria": [
+        "Ensure context package is correctly aliased/imported",
+        "Handle context cancellation function returns",
+        "Verify 29_context_timeout.singlish and 30_context_cancel.singlish pass"
+      ],
+      "startedAt": "2026-01-28T05:52:09.841696+00:00",
+      "completedAt": "2026-01-28T05:52:38.508956+00:00",
+      "updatedAt": "2026-01-28T05:52:38.508856+00:00"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+kampung main
+dapao "fmt"
+
+action boss() {
+    // Loop from 1 to 100
+    // 'got' declares a variable (var)
+    // 'nombor' is int type
+    got i nombor = 1
+    
+    // 'loop' is for loop
+    loop i <= 100 {
+        // 'nasi' is 'if'
+        nasi i % 15 == 0 {
+            gong("FizzBuzz")
+        } 
+        // 'den nasi' is 'else if'
+        den nasi i % 3 == 0 {
+            gong("Fizz")
+        } 
+        // 'den nasi' is 'else if'
+        den nasi i % 5 == 0 {
+            gong("Buzz")
+        } 
+        // 'den' is 'else'
+        den {
+            gong(i)
+        }
+        
+        i++
+    }
+}

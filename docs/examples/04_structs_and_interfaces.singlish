@@ -1,0 +1,39 @@
+kampung main
+dapao "fmt"
+
+// Define an interface (kaki)
+// interfaces are 'kakis' (buddies/types) that share behavior
+pattern Eater kaki {
+    action makan()
+}
+
+// Define a struct (barang)
+// 'pattern' defines a type, 'barang' is a struct
+pattern Person barang {
+    got name tar        // string
+    got hungry bolehtak // boolean (can/cannot)
+}
+
+// Method for Person
+// (p ki Person) attaches this action to the Person struct
+action (p ki Person) makan() {
+    // 'can' is true
+    nasi p.hungry == can {
+        gong(p.name + " is eating Chicken Rice. Shiok!")
+        // 'cannot' is false
+        p.hungry = cannot
+    } den {
+        gong(p.name + " is full already. Dowan eat.")
+    }
+}
+
+action boss() {
+    // Instantiate struct
+    got ah_beng = Person{name: "Ah Beng", hungry: can}
+    
+    // Call method
+    ah_beng.makan()
+    
+    // Call again to see state change
+    ah_beng.makan()
+}

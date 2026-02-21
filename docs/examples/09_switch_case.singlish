@@ -1,0 +1,25 @@
+kampung main
+dapao "fmt"
+dapao "time"
+
+action boss() {
+    got day = time.Now().Weekday()
+    
+    gong("Today is " + day.String())
+
+    // Switch statement
+    // 'see_how' is switch
+    see_how day {
+        // 'say' is case
+        say time.Saturday:
+            // Fallthrough is implicit or explicit depending on implementation
+            // Assuming standard Go behavior (no fallthrough)
+            gong("Weekend liao! Go jalan jalan.")
+        say time.Sunday:
+            gong("Tomorrow Monday... sian.")
+        
+        // 'anyhow' is default
+        anyhow:
+            gong("Work heavy, mood low.")
+    }
+}

@@ -1,0 +1,30 @@
+kampung main
+dapao "fmt"
+
+action open_shop() {
+    gong("Open shop door...")
+}
+
+action close_shop() {
+    gong("Close shop door! Balek kampung.")
+}
+
+action serve_customer(name tar) {
+    gong("Serving " + name)
+}
+
+action boss() {
+    open_shop()
+    
+    // 'nanti' is defer. 
+    // This will run at the end of the 'boss' function,
+    // even if things go wrong (or just naturally finish).
+    nanti close_shop()
+
+    serve_customer("Ah Kow")
+    serve_customer("Muthu")
+    serve_customer("Siti")
+    
+    gong("Finished serving everyone.")
+    // close_shop() runs here automatically because of 'nanti'
+}

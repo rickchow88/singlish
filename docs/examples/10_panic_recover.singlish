@@ -1,0 +1,30 @@
+kampung main
+dapao "fmt"
+
+action risky_business() {
+    // 'nanti' (defer) function that handles recovery
+    nanti action() {
+        // 'heng' is recover
+        // It catches the panic value
+        got status = heng()
+        nasi status != kosong {
+            gong("Wah! Almost died via: ", status)
+            gong("But heng ah, I handled it.")
+        }
+    }()
+
+    gong("Doing risky business...")
+    
+    // 'gabra' is panic
+    // Something went terribly wrong
+    gabra("System crash! Cannot tahan!")
+    
+    // This line will never be reached
+    gong("This one confirm cannot see.")
+}
+
+action boss() {
+    gong("Start main program.")
+    risky_business()
+    gong("Main program continue normal... steady.")
+}

@@ -1,0 +1,26 @@
+kampung main
+dapao "fmt"
+dapao "os"
+
+action boss() {
+    got content = "Hello content for file.\n"
+    
+    // Create new file
+    got f, err = os.Create("test_output.txt")
+    nasi err != kosong {
+        gong(err)
+        balek
+    }
+    
+    // Write string
+    // 'nanti' close file
+    nanti f.Close()
+    
+    got _, err2 = f.WriteString(content)
+    nasi err2 != kosong {
+        gong(err2)
+        balek
+    }
+    
+    gong("File done write already.")
+}

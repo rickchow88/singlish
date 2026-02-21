@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "total": 5,
+  "remaining": 5,
+  "quality_gates": [],
+  "id": "STORY-001",
+  "title": "Fix Segfault in Parser (Typed Nil)"
+}

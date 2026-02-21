@@ -1,0 +1,9 @@
+kampung main
+dapao "fmt"
+
+action boss() {
+    got c = buat(lobang<tar>, 1)
+    c pass "hello"
+    got msg = catch c
+    gong(msg)
+}

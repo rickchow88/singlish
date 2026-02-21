@@ -1,0 +1,17 @@
+kampung main
+dapao "fmt"
+dapao "net/http"
+dapao "io/ioutil"
+
+action boss() {
+    got resp, err = http.Get("http://example.com")
+    nasi err != kosong {
+        gong(err)
+        balek
+    }
+    nanti resp.Body.Close()
+    
+    got body, _ = ioutil.ReadAll(resp.Body)
+    gong(tar(body))
+}
+

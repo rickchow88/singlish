@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "total": 5,
+  "remaining": 2,
+  "quality_gates": [],
+  "id": "STORY-004",
+  "title": "Support Float Literals"
+}

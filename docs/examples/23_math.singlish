@@ -1,0 +1,13 @@
+kampung main
+dapao "fmt"
+dapao "math"
+
+action boss() {
+    gong("Abs of -10 is", math.Abs(-10))
+    gong("Pow 2^3 is", math.Pow(2, 3))
+    gong("Sqrt of 16 is", math.Sqrt(16))
+    gong("Ceil of 2.3 is", math.Ceil(2.3))
+    gong("Floor of 2.9 is", math.Floor(2.9))
+    gong("Max of 2 and 5 is", math.Max(2, 5))
+    gong("Min of 2 and 5 is", math.Min(2, 5))
+}

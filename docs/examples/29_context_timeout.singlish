@@ -1,0 +1,26 @@
+kampung main
+dapao "fmt"
+dapao "time"
+dapao "context"
+
+action boss() {
+    // Create context with timeout of 2 seconds
+    got ctx, cancel = context.WithTimeout(context.Background(), 2*time.Second)
+    nanti cancel()
+
+    got done = buat(lobang<tar>)
+
+    chiong action() {
+        // Simulate work taking 3 seconds
+        time.Sleep(3 * time.Second)
+        done.pass("Job complete")
+    }()
+
+    tikam {
+    say res := <-done:
+        gong("Success:", res)
+    say <-ctx.Done():
+        // This should happen because 2s < 3s
+        gong("Context expired:", ctx.Err())
+    }
+}

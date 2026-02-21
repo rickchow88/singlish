@@ -1,0 +1,16 @@
+kampung main
+dapao "fmt"
+dapao "os"
+
+action boss() {
+    // Read entire file shimple way
+    got dat, err = os.ReadFile("12_constants.singlish")
+    nasi err != kosong {
+        gong("Cannot read file:", err)
+        balek
+    }
+    
+    gong("File content:")
+    // Convert byte slice to string (tar)
+    gong(tar(dat))
+}

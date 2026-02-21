@@ -1,0 +1,26 @@
+kampung main
+dapao "fmt"
+dapao "time"
+
+action boss() {
+    // Ticker fires every 500ms
+    got ticker = time.NewTicker(500 * time.Millisecond)
+    got done = buat(lobang<bolehtak>)
+
+    chiong action() {
+        loop {
+            tikam {
+            say <-done:
+                balek
+            say t := <-ticker.C:
+                gong("Tick at", t)
+            }
+        }
+    }()
+
+    // Wait for 1600ms then stop
+    time.Sleep(1600 * time.Millisecond)
+    ticker.Stop()
+    done.pass(can) // pass true
+    gong("Ticker stopped")
+}

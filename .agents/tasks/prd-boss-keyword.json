@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "project": "Refactor Singlish Keyword 'main' to 'boss'",
+  "overview": "Rename the entry point function name from `main` to `boss` across the entire Singlish ecosystem, including documentation, examples, and transpiler logic.",
+  "goals": [
+    "Replace `main` with `boss` as the reserved keyword for the entry function in Singlish",
+    "Maintain backward compatibility in generated Go code (mapping boss -> main)",
+    "Update all documentation and examples"
+  ],
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "Update Documentation",
+      "status": "done",
+      "description": "Update all markdown documentation to refer to `boss` instead of `main` as the entry point.",
+      "acceptanceCriteria": [
+        "Update docs/SINGLISH_KEYWORDS.md",
+        "Update ralph/docs/SINGLISH-User-manual.md",
+        "Update ralph/docs/SINGLISH_KEYWORDS.md",
+        "Ensure no confusing references to 'action main' remain"
+      ],
+      "startedAt": "2026-01-28T08:19:26.530535+00:00",
+      "completedAt": "2026-01-28T08:19:59.874763+00:00",
+      "updatedAt": "2026-01-28T08:19:59.874581+00:00"
+    },
+    {
+      "id": "US-002",
+      "title": "Update Transpiler Logic",
+      "status": "done",
+      "description": "Modify the transpiler to accept `boss` and transpile it to `main` in Go.",
+      "acceptanceCriteria": [
+        "Add `boss: 'main'` to the default dictionary (ralph/pkg/dictionaries)",
+        "Verify codegen handles the mapping correctly",
+        "Ensure generated Go code uses `func main()` so it is executable"
+      ],
+      "startedAt": "2026-01-28T08:20:01.952574+00:00",
+      "completedAt": "2026-01-28T08:20:35.479950+00:00",
+      "updatedAt": "2026-01-28T08:20:35.479841+00:00"
+    },
+    {
+      "id": "US-003",
+      "title": "Migrate Example Code",
+      "status": "done",
+      "description": "Bulk update all Singlish example files to use `action boss()`.",
+      "acceptanceCriteria": [
+        "Update all files in docs/examples/",
+        "Update all files in ralph/docs/examples/",
+        "Update hello.singlish and ralph/docs/hello.singlish",
+        "Replace `action main()` with `action boss()`"
+      ],
+      "startedAt": "2026-01-28T08:34:55.667795+00:00",
+      "completedAt": "2026-01-28T08:35:33.769097+00:00",
+      "updatedAt": "2026-01-28T08:35:33.768987+00:00"
+    },
+    {
+      "id": "US-004",
+      "title": "Validation",
+      "status": "done",
+      "description": "Verify the refactor didn't break the build or execution.",
+      "acceptanceCriteria": [
+        "Rebuild the ralph CLI",
+        "Run `singlish run` on updated examples",
+        "Pass all integration tests"
+      ],
+      "startedAt": "2026-01-28T08:35:35.851286+00:00",
+      "completedAt": "2026-01-28T08:36:04.041356+00:00",
+      "updatedAt": "2026-01-28T08:36:04.041227+00:00"
+    }
+  ]
+}

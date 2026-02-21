@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "project": "Fix Singlish Transpiler",
+  "overview": "Review and fix the Singlish to Go transpiler by ensuring all documentation examples compile and run correctly.",
+  "goals": [
+    "Verify all Singlish examples in /docs/examples work as expected",
+    "Fix transpiler bugs preventing examples from running",
+    "Update examples if they are outdated relative to the transpiler spec"
+  ],
+  "nonGoals": [
+    "Adding new language features",
+    "Refactoring the entire codebase"
+  ],
+  "successMetrics": [
+    "100% of examples in /docs/examples execute successfully",
+    "Integration tests pass on CI"
+  ],
+  "openQuestions": [],
+  "stack": {
+    "language": "Go",
+    "test_framework": "Go testing"
+  },
+  "routes": [],
+  "uiNotes": [],
+  "dataModel": [],
+  "importFormat": {
+    "description": "None",
+    "example": {}
+  },
+  "rules": [],
+  "qualityGates": [
+    "go test ./ralph/..."
+  ],
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "Expand Integration Tests",
+      "status": "done",
+      "dependsOn": [],
+      "description": "As a developer, I want the integration tests to run all examples in /docs/examples so that I have full coverage.",
+      "acceptanceCriteria": [
+        "Update ralph/tests/integration/examples_test.go",
+        "Dynamically list all .singlish files in ../../docs/examples",
+        "Run each file using the singlish binary",
+        "Assert that the command exits with code 0",
+        "Pass: Test discovers and runs all examples (even if some fail)"
+      ],
+      "startedAt": "2026-01-28T05:05:20.153454+00:00",
+      "completedAt": "2026-01-28T05:05:51.946562+00:00",
+      "updatedAt": "2026-01-28T05:05:51.946413+00:00"
+    },
+    {
+      "id": "US-002",
+      "title": "Fix Transpiler Failures",
+      "status": "done",
+      "dependsOn": [
+        "US-001"
+      ],
+      "description": "As a developer, I want to fix any bugs exposed by the expanded integration tests.",
+      "acceptanceCriteria": [
+        "Run the updated integration tests",
+        "Identify failing examples",
+        "Fix the transpiler (pkg/transpiler, pkg/parser, etc.) or the example code if invalid",
+        "Verify all examples pass"
+      ],
+      "startedAt": "2026-01-28T05:05:54.022498+00:00",
+      "completedAt": "2026-01-28T05:06:21.083913+00:00",
+      "updatedAt": "2026-01-28T05:06:21.083793+00:00"
+    }
+  ]
+}

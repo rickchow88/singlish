@@ -1,0 +1,12 @@
+kampung main
+dapao "fmt"
+dapao "os"
+
+action boss() {
+    got args = os.Args
+    gong("Number of arguments:", len(args))
+    
+    loop i, arg = all args {
+        gong("Arg", i, ":", arg)
+    }
+}

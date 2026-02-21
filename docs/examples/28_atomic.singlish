@@ -1,0 +1,23 @@
+kampung main
+dapao "fmt"
+dapao "sync"
+dapao "sync/atomic"
+
+action boss() {
+    got ops uint64 // unsigned int64
+    got wg sync.WaitGroup
+
+    loop i := 0; i < 50; i++ {
+        wg.Add(1)
+        chiong action() {
+            loop c := 0; c < 1000; c++ {
+                // Atomic addition
+                atomic.AddUint64(&ops, 1)
+            }
+            wg.Done()
+        }()
+    }
+
+    wg.Wait()
+    gong("Ops:", ops)
+}

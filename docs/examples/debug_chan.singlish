@@ -1,0 +1,9 @@
+kampung main
+
+action boss() {
+    got c = buat(lobang<tar>, 1)
+
+    c.pass("Hello")
+    got msg = <-c
+    gong(msg)
+}

@@ -1,0 +1,22 @@
+kampung main
+dapao "fmt"
+dapao "encoding/json"
+
+pattern User barang {
+    Name  tar    `json:"name"`
+    Age   nombor `json:"age"`
+    Email tar    `json:"email"`
+}
+
+action boss() {
+    got u = User{Name: "Ah Beng", Age: 30, Email: "ahbeng@example.com"}
+    
+    // Marshalling to JSON
+    got jsonData, err = json.Marshal(u)
+    nasi err != kosong {
+        gong(err)
+        balek
+    }
+    
+    gong(tar(jsonData))
+}

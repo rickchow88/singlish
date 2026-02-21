@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "total": 5,
+  "remaining": 3,
+  "quality_gates": [
+    "cd ralph && go test -v ./tests/integration"
+  ],
+  "id": "US-003",
+  "title": "Fix Control Flow Parsing (Loops & Conditionals)"
+}

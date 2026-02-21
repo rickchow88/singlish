@@ -1,0 +1,14 @@
+kampung main
+dapao "fmt"
+dapao "net/http"
+
+action hello(w http.ResponseWriter, req ki http.Request) {
+    fmt.Fprintf(w, "Hello from Singlish Server\n")
+}
+
+action boss() {
+    http.HandleFunc("/hello", hello)
+    
+    gong("Server starting at :8090...")
+    http.ListenAndServe(":8090", kosong)
+}

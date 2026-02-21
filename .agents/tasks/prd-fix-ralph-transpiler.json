@@ -1,0 +1,125 @@
+{
+  "title": "Fix Ralph Transpiler and Parser Issues",
+  "status": "draft",
+  "overview": {
+    "problem": "Integration tests revealed critical segmentation faults and parsing errors (loops, multiple declarations, floats) in the Ralph transpiler.",
+    "goal": "Eliminate panics and support missing language features (range loops, multi-var decl, floats) to ensure all integration tests pass."
+  },
+  "stories": [
+    {
+      "id": "STORY-001",
+      "title": "Fix Segfault in Parser (Typed Nil)",
+      "status": "done",
+      "description": "Prevent segmentation fault by handling typed nil returns in parser.go.\n\nRoot Cause:\nTyped nil interface issue. parseForStatement returns nil wrapped in ast.Statement, causing panic when accessed in codegen.\n\nTechnical Spec:\n- Modify parseStatement to check for concrete nil before returning interface.\n- Ensure no nil AST nodes are returned wrapped in interfaces.",
+      "acceptanceCriteria": [
+        "Verify 'parseForStatement' does not return a typed nil interface.",
+        "Run integration tests and confirm the specific segfault is resolved."
+      ],
+      "dependsOn": [],
+      "startedAt": "2026-01-28T10:17:00.949133+00:00",
+      "completedAt": "2026-01-28T10:17:37.003593+00:00",
+      "updatedAt": "2026-01-28T10:17:37.003477+00:00"
+    },
+    {
+      "id": "STORY-002",
+      "title": "Support Range Loops",
+      "status": "done",
+      "description": "Implement Range Loop parsing and codegen support.\n\nIssue:\nParser only supports C-style/while-style loops. Fails on 'loop i, v = all orders'.\n\nTechnical Spec:\n- Update parseForStatement to handle 'range' or 'all' keywords.\n- Update AST: Possibly add RangeLoopStatement or update ForStatement to support range semantics.\n- Implement code generation for range loops.",
+      "acceptanceCriteria": [
+        "Parser accepts 'loop i, v = all orders' syntax.",
+        "Codegen produces valid Go 'for i, v := range orders' (or equivalent).",
+        "Integration tests with range loops pass."
+      ],
+      "dependsOn": [],
+      "startedAt": "2026-01-28T10:17:39.080248+00:00",
+      "completedAt": "2026-01-28T10:18:10.148680+00:00",
+      "updatedAt": "2026-01-28T10:18:10.148565+00:00"
+    },
+    {
+      "id": "STORY-003",
+      "title": "Support Multiple Variable Declarations",
+      "status": "done",
+      "description": "Update AST and Parser to support multiple variable declarations in LetStatement.\n\nIssue:\nast.LetStatement only supports single identifier. Fails on 'got f, err = ...'.\n\nTechnical Spec:\n- Update LetStatement to have Names []*Identifier (instead of single Name).\n- Update parseLetStatement to handle comma-separated identifiers.\n- Update visitLetStatement in codegen to generate comma-separated variables.",
+      "acceptanceCriteria": [
+        "Parser accepts 'got x, y = ...' syntax.",
+        "Codegen produces valid Go multi-variable assignment.",
+        "Existing single-variable declarations still work."
+      ],
+      "dependsOn": [],
+      "startedAt": "2026-01-28T10:18:12.210807+00:00",
+      "completedAt": "2026-01-28T10:18:38.199966+00:00",
+      "updatedAt": "2026-01-28T10:18:38.199858+00:00"
+    },
+    {
+      "id": "STORY-004",
+      "title": "Support Float Literals",
+      "status": "done",
+      "description": "Add FloatLiteral support to AST and Parser.\n\nIssue:\nNo FloatLiteral support. parseIntegerLiteral fails on '2.3'.\n\nTechnical Spec:\n- Add FloatLiteral node to AST.\n- Add parsing logic for float literals (distinguish from integers).",
+      "acceptanceCriteria": [
+        "Parser accepts '2.3', '0.5', etc.",
+        "Codegen produces valid Go float literals.",
+        "Math operations with floats work as expected."
+      ],
+      "dependsOn": [],
+      "startedAt": "2026-01-28T10:18:40.260907+00:00",
+      "completedAt": "2026-01-28T10:19:17.446429+00:00",
+      "updatedAt": "2026-01-28T10:19:17.446316+00:00"
+    },
+    {
+      "id": "STORY-005",
+      "title": "Fix Main/Boss Keyword Mapping",
+      "status": "done",
+      "description": "Ensure 'kampung main' and 'action boss' parse correctly to Go's main package and function.\n\nGoal:\n'kampung main' -> package main\n'action boss' -> func main()",
+      "acceptanceCriteria": [
+        "Source file with 'kampung main' transpiles to 'package main'.",
+        "Source file with 'action boss' transpiles to 'func main()'.",
+        "Compiled binary runs correctly."
+      ],
+      "dependsOn": [],
+      "startedAt": "2026-01-28T10:19:19.509239+00:00",
+      "completedAt": "2026-01-28T10:19:53.391286+00:00",
+      "updatedAt": "2026-01-28T10:19:53.391167+00:00"
+    }
+  ],
+  "original_root_causes": [
+    {
+      "issue": "Segmentation Fault",
+      "location": "ralph/pkg/codegen/codegen.go:104",
+      "details": "Typed nil interface issue. parseForStatement returns nil wrapped in ast.Statement, causing panic when accessed in codegen."
+    },
+    {
+      "issue": "Missing Range Loop Support",
+      "details": "Parser only supports C-style/while-style loops. Fails on 'loop i, v = all orders'."
+    },
+    {
+      "issue": "Multiple Variable Declaration",
+      "details": "ast.LetStatement only supports single identifier. Fails on 'got f, err = ...'."
+    },
+    {
+      "issue": "Float Parsing",
+      "details": "No FloatLiteral support. parseIntegerLiteral fails on '2.3'."
+    }
+  ],
+  "original_technical_spec": {
+    "parser_changes": [
+      "Modify parseStatement to check for concrete nil before returning interface.",
+      "Update parseForStatement to handle 'range' or 'all' keywords.",
+      "Update parseLetStatement to handle comma-separated identifiers.",
+      "Add parsing logic for float literals."
+    ],
+    "ast_changes": [
+      "Update LetStatement to have Names []*Identifier.",
+      "Add FloatLiteral node.",
+      "Possibly add RangeLoopStatement or update ForStatement."
+    ],
+    "codegen_changes": [
+      "Update visitLetStatement to generate comma-separated variables.",
+      "Implement code generation for range loops."
+    ]
+  },
+  "verification_plan": [
+    "Apply fix for REQ-001 (Segfault) and verify panic is gone.",
+    "Implement parsing features (REQ-002, REQ-003, REQ-004).",
+    "Run 'go test -v ./tests/integration' and confirm all tests pass."
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "total": 5,
+  "remaining": 3,
+  "quality_gates": [],
+  "id": "STORY-003",
+  "title": "Support Multiple Variable Declarations"
+}

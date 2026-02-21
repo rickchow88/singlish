@@ -1,0 +1,22 @@
+kampung main
+dapao "fmt"
+dapao "encoding/json"
+
+pattern User barang {
+    Name tar
+    Age  nombor
+}
+
+action boss() {
+    got jsonStr = `{"Name": "Siti", "Age": 25}`
+    got u User
+    
+    // Unmarshal JSON to struct
+    got err = json.Unmarshal([]byte(jsonStr), &u)
+    nasi err != kosong {
+        gong(err)
+        balek
+    }
+    
+    gong("Decoded User:", u.Name, u.Age)
+}

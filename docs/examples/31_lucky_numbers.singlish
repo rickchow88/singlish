@@ -1,0 +1,43 @@
+kampung main
+
+dapao "fmt"
+dapao "math/rand"
+dapao "sort"
+dapao "time"
+
+action boss() {
+    // Seed the random number generator (using standard Go library)
+    rand.Seed(time.Now().UnixNano())
+
+    got i nombor = 0
+    
+    // Repeat 3 times
+    loop i < 3 {
+        // Create an empty slice for numbers
+        got nums = buat([]nombor, 0)
+        
+        // Use a map to track duplicates. 'menu' maps to 'map'
+        // Trying explicit syntax to help parser if nested brackets confuse it
+        got seen = buat(map[int]bool)
+
+        // Select 6 unique numbers
+        loop count(nums) < 6 {
+            // rand.Intn(49) returns 0-48, so add 1
+            got n = rand.Intn(49) + 1
+            
+            // If not seen yet
+            nasi !seen[n] {
+                seen[n] = can // can = true
+                nums = upsize(nums, n) // upsize = append
+            }
+        }
+
+        // Sort the slice
+        sort.Ints(nums)
+
+        // Output
+        gong("Lucky numbers:", nums)
+        
+        i++
+    }
+}

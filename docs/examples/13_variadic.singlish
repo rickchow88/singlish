@@ -1,0 +1,21 @@
+kampung main
+dapao "fmt"
+
+// Variadic function using ...
+action sum(nums ...nombor) nombor {
+    got total nombor = 0
+    loop _, num = all nums {
+        total += num
+    }
+    balek total
+}
+
+action boss() {
+    got total = sum(1, 2, 3, 4, 5)
+    gong("Sum of 1 to 5 is:", total)
+
+    got numbers = []nombor{10, 20, 30}
+    // expanding slice
+    got total2 = sum(numbers...)
+    gong("Sum of 10, 20, 30 is:", total2)
+}

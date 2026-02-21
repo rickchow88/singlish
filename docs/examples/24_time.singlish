@@ -1,0 +1,30 @@
+kampung main
+dapao "fmt"
+dapao "time"
+
+action boss() {
+    got now = time.Now()
+    gong("Current time:", now)
+
+    got year, month, day = now.Date()
+    gong("Year:", year)
+    gong("Month:", month)
+    gong("Day:", day)
+
+    got custom = time.Date(2025, 8, 9, 20, 34, 58, 651387237, time.UTC)
+    gong("Custom date:", custom)
+
+    gong(custom.Year())
+    gong(custom.Month())
+    gong(custom.Day())
+    gong(custom.Hour())
+    gong(custom.Minute())
+    gong(custom.Second())
+    gong(custom.Nanosecond())
+    gong(custom.Location())
+    gong(custom.Weekday())
+    
+    // Formatting
+    gong(now.Format("3:04PM"))
+    gong(now.Format("Mon Jan _2 15:04:05 2006"))
+}

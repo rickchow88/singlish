@@ -1,0 +1,29 @@
+kampung main
+dapao "fmt"
+dapao "time"
+dapao "context"
+
+action boss() {
+    got ctx, cancel = context.WithCancel(context.Background())
+
+    chiong action(ctx context.Context) {
+        loop {
+            tikam {
+            say <-ctx.Done():
+                 gong("Worker: I am stopping now.")
+                 balek
+            anyhow:
+                 gong("Worker: still working...")
+                 time.Sleep(500 * time.Millisecond)
+            }
+        }
+    }(ctx)
+
+    // Let it run for 2 seconds
+    time.Sleep(2 * time.Second)
+    gong("Boss: Stop mechanism triggered!")
+    cancel() // Send cancellation signal
+    
+    // Give time to see print output
+    time.Sleep(1 * time.Second)
+}

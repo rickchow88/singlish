@@ -1,0 +1,18 @@
+kampung main
+dapao "fmt"
+dapao "strings"
+
+action boss() {
+    gong("Contains:  ", strings.Contains("test", "es"))
+    gong("Count:     ", strings.Count("test", "t"))
+    gong("HasPrefix: ", strings.HasPrefix("test", "te"))
+    gong("HasSuffix: ", strings.HasSuffix("test", "st"))
+    gong("Index:     ", strings.Index("test", "e"))
+    gong("Join:      ", strings.Join([]tar{"a", "b"}, "-"))
+    gong("Repeat:    ", strings.Repeat("a", 5))
+    gong("Replace:   ", strings.Replace("foo", "o", "0", -1))
+    gong("Replace:   ", strings.Replace("foo", "o", "0", 1))
+    gong("Split:     ", strings.Split("a-b-c-d-e", "-"))
+    gong("ToLower:   ", strings.ToLower("TEST"))
+    gong("ToUpper:   ", strings.ToUpper("test"))
+}

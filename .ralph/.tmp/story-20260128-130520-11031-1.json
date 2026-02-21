@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "total": 2,
+  "remaining": 2,
+  "quality_gates": [
+    "go test ./ralph/..."
+  ],
+  "id": "US-001",
+  "title": "Expand Integration Tests"
+}

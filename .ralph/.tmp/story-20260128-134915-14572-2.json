@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "total": 5,
+  "remaining": 4,
+  "quality_gates": [
+    "cd ralph && go test -v ./tests/integration"
+  ],
+  "id": "US-002",
+  "title": "Fix Compiler Panic in Codegen (Arrays/Slices)"
+}

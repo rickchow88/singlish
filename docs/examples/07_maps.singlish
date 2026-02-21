@@ -1,0 +1,32 @@
+kampung main
+dapao "fmt"
+
+action boss() {
+    // Map definition
+    // 'menu[key_type]value_type'
+    got price_list = buat(menu[tar]nombor)
+
+    // Assigning values
+    price_list["Chicken Rice"] = 5
+    price_list["Laksa"] = 6
+    price_list["Cai Png"] = 4
+
+    gong("Original Price List:")
+    gong(price_list)
+
+    // Checking if key exists
+    // 'val, exists = map[key]'
+    got price, got_lobang = price_list["Laksa"]
+    nasi got_lobang {
+        gong("Laksa price is: ", price)
+    }
+
+    // Deleting a key
+    // 'buang' is delete
+    buang(price_list, "Cai Png")
+    
+    gong("After removing Cai Png:")
+    loop food, cost = all price_list {
+         fmt.Printf("%s costs $%d\n", food, cost)
+    }
+}

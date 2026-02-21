@@ -1,0 +1,40 @@
+kampung main
+dapao "fmt"
+dapao "errors"
+
+// Function returning value and error (salah)
+// returns (string, error) -> (tar, salah)
+action buy_bubble_tea(flavour tar) (tar, salah) {
+    nasi flavour == "Durian" {
+        // Return error
+        // 'balek' is return
+        balek "", errors.New("Walau eh, Durian flavour sold out!")
+    }
+    
+    // 'kosong' is nil
+    balek "Here is your " + flavour + " Bubble Tea", kosong
+}
+
+action boss() {
+    // Try buying Grape
+    // Multiple return values
+    got drink, problem = buy_bubble_tea("Grape")
+    
+    // Check if error exists (problem != nil)
+    nasi problem != kosong {
+        gong("Error: " + problem.Error())
+    } den {
+        gong(drink)
+    }
+
+    // Try buying Durian
+    got drink2, problem2 = buy_bubble_tea("Durian")
+    
+    nasi problem2 != kosong {
+        // recovering from error
+        gong("Heng ah, saved money. Error: " + problem2.Error())
+    } den {
+        gong(drink2)
+    }
+}
+

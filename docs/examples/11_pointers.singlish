@@ -1,0 +1,21 @@
+kampung main
+dapao "fmt"
+
+// Function taking a pointer
+// 'tunjuk' means pointer (*) using the ඞ symbol or just * in implementation
+action upsize_me(val ki nombor) {
+    // Dereferencing to change value
+    // ki val = ki val + 10
+    ki val = ki val + 50
+}
+
+action boss() {
+    got my_money nombor = 10
+    
+    gong("Original money: ", my_money)
+    
+    // Pass address of variable using & (standard Go syntax usually kept for address)
+    upsize_me(&my_money)
+    
+    gong("Money after upsize: ", my_money)
+}

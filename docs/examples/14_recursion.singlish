@@ -1,0 +1,16 @@
+kampung main
+dapao "fmt"
+
+// Recursive function for factorial
+action factorial(n nombor) nombor {
+    nasi n == 0 {
+        balek 1
+    }
+    balek n * factorial(n-1)
+}
+
+action boss() {
+    got val = 5
+    got result = factorial(val)
+    gong("Factorial of 5 is:", result)
+}

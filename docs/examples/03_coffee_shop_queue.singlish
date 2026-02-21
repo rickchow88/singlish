@@ -1,0 +1,38 @@
+kampung main
+dapao "fmt"
+dapao "time"
+
+// Worker function
+// 'lobang<tok>' is channel of strings
+action make_kopi(order_id nombor, counter lobang<tar>) {
+    // Simulate work
+    time.Sleep(1 * time.Second)
+    
+    // Pass result to channel (send)
+    // 'pass' sends data into the 'lobang'
+    // counter.pass(fmt.Sprintf("Order %d done: Kopi O Kosong", order_id))
+    counter pass fmt.Sprintf("Order %d done: Kopi O Kosong", order_id)
+}
+
+action boss() {
+    // Create a channel (lobang) for strings (tar)
+    // 'buat' is make
+    got counter = buat(lobang<tar>)
+
+    gong("Shop opening! Orders coming in...")
+
+    // Start 3 concurrent workers
+    loop i := 1; i <= 3; i++ {
+        // 'chiong' starts a goroutine (go)
+        chiong make_kopi(i, counter)
+    }
+
+    // Collect 3 results
+    loop i := 1; i <= 3; i++ {
+        // 'catch' receives from channel
+        got drink = catch counter
+        gong(drink)
+    }
+
+    gong("Shop closing already!")
+}

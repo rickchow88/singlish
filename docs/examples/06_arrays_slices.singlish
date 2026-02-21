@@ -1,0 +1,27 @@
+kampung main
+dapao "fmt"
+
+action boss() {
+    // Array (fixed size)
+    // 'nombor' is int
+    got prices [5]nombor
+    prices[0] = 10
+    prices[1] = 20
+    
+    // Slice (dynamic size)
+    // '[]tar' is a slice of strings
+    got orders []tar
+    
+    // 'upsize' is append
+    orders = upsize(orders, "Kopi")
+    orders = upsize(orders, "Teh")
+    orders = upsize(orders, "Milo")
+
+    gong("All orders:")
+    
+    // Range loop using 'all'
+    // 'loop index, value = all collection'
+    loop i, drinks = all orders {
+        fmt.Printf("Order %d: %s\n", i, drinks)
+    }
+}
