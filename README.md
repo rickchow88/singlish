@@ -186,6 +186,10 @@ Explore all [100+ examples here](/examples).
 49. [49_interface_embedding.singlish](/examples/49_interface_embedding.singlish)
 50. [50_select_with_default.singlish](/examples/50_select_with_default.singlish)
 
+## Test with
+
+> go build -o singlish main.go && go run run_all.go
+
 ---
 
 > Browse the [full list of 80+ examples here](#-examples-first-50).
