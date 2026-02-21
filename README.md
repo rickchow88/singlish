@@ -1,14 +1,60 @@
-# Singlish 🇸🇬
+# Singlish 🇸🇬🦁
 
-Singlish is a culturally authentic, high-performance programming language designed for the vibrant spirit of Singapore. Built as a sophisticated **Go-based transpiler**, it allows developers to build scalable, production-ready systems using the familiar colloquialisms of the little red dot.
+> *"Eh, you write code in Go ah? So cheem for what? Use Singlish lah!"*
 
-## Why Singlish?
+**Singlish** is the world's first — and almost certainly *last* — **Go-based programming language** built entirely on the sacred colloquialisms of the **Singapore Kopitiam**. It is a high-performance, production-ready, fully compiled language for developers who are absolutely **sibeh sian** of typing `package`, `func`, and `nil` like some kind of ang moh.
 
-- **🚀 Performance without Compromise**: Every Singlish line compiles 1:1 into optimized Go code. You get the speed of Go with the expressiveness of a Kopitiam conversation.
-- **🚥 Concurrency as Nature Intended**: Spin up goroutines with `chiong` and manage communication through `lobang` (channels). Built-in support for `pass` and `catch` semantics makes async logic feel like a breeze.
-- **😤 The "Kena Scold" Error System**: Tired of polite, cryptic compilers? Singlish gives it to you straight. If you code like a *sotong*, our "Insult Engine" will let you know in authentic Singlish diagnostics (e.g., *"Wake up your idea"*, *"Eh bodoh"*, *"Catch no ball sia"*, or *"Simi sai is this?"*).
-- **📦 Go Interop**: Effortlessly use any standard Go library or third-party package. `dapao` (import) what you need and start coding.
-- **🇸🇬 Localized Semantics**: From `kampung` (packages) to `boss` (main entry point), the language maps logical programming concepts to clear Singaporean metaphors.
+Why write `package main` when you can write `kampung main`? Why say `func` like you're some kind of textbook when you can say `action`, like the pasar malam uncle who hasn't stopped hustling since 1987? Every keyword in Singlish has been **lovingly ripped from the streets of Singapore**, seasoned with decades of hawker centre wisdom, and welded onto the Go runtime with the structural integrity of a HDB void deck renovation.
+
+This is not a toy. This is not a joke language. Well — okay, it *is* a joke language. But it compiles to real Go, runs at real Go speed, and will make your CI/CD pipeline question its life choices in perfect Singlish.
+
+---
+
+## 🤔 The Origin Story (Very Legit One)
+
+It started, as all great Singaporean inventions do, with someone complaining. The founder looked at Go's syntax, then at their teh-tarik, and thought: *"This code got no soul one. Where's the kampung spirit?"*
+
+Weeks of questionable engineering decisions later, `package` became `kampung`, `func` became `action`, `nil` became `kosong` (empty, like your bank account after Orchard Road), and `true` became `can` — because in Singapore, `can` is the answer to literally everything.
+
+The **Insult Engine** was added shortly after, because a polite compiler error is a wasted opportunity.
+
+---
+
+## 💡 Why Singlish? (Confirm Plus Chop Got Reasons)
+
+- **🚀 Go Speed, Kopitiam Soul** — Every line of Singlish compiles **1:1 into optimised Go code**. You get goroutines, garbage collection, static typing, and all the good stuff — but you also get to write `loop` instead of `for`, `balek` instead of `return`, and `nasi` instead of `if`. Your binary will be fast. Your code will be shiok.
+
+- **🏃 Concurrency, Singapore Style** — Need to run things in parallel? Just `chiong` it (rush it, like you're late for the 7:31 MRT). Pass data through a `lobang` (channel). The whole concurrency model maps so naturally to Singlish that goroutines feel less like threading primitives and more like dispatching uncles to do different tasks simultaneously at a busy zi char stall.
+
+- **😤 The "Kena Scold" Compiler** — Most compilers give you polite, passive-aggressive error messages. Singlish does not. If your code is wrong, the compiler will tell you — *loudly*, in hall-monitor Singlish. Expect gems like:
+  - *"Eh bodoh, what is this?"*
+  - *"Catch no ball sia"*
+  - *"Wake up your idea"*
+  - *"Blur like sotong"*
+  - *"Simi sai is this?"*
+
+  This is not cruelty. This is **mentorship**, Singapore-style.
+
+- **📦 Full Go Interop, No Drama** — `dapao` (takeaway/import) any Go standard library or third-party package directly into your Singlish project. Need `net/http`? `dapao "net/http"`. Need `sort`? `dapao "sort"`. The entire Go ecosystem is yours. You're basically just writing Go, but make it *garang*.
+
+- **🧠 Keywords That Actually Make Sense** — `kosong` for `nil` (empty). `bolehtak` for `bool` (can or not?). `nombor` for `int` (number). `tar` for `string` (talk/speech). `buat` for `make` (Malay: to make). Every keyword was chosen so that a Singapore auntie who has never programmed in her life could, theoretically, read your code and have *some* idea what's going on. We have not tested this theory. We are too scared.
+
+- **🇸🇬 Localized Semantics** — The entry point is `action boss()`. The package is your `kampung`. You `chiong` goroutines, pass data through `lobang`s (gaps/channels), and when things go wrong you `gabra` (panic). When they recover, you say `heng ah` (lucky). This is not just a language. This is a **lifestyle**.
+
+- **143 Examples and Counting** — From Hello World to HTTP servers, goroutine worker pools, cryptography, sorting algorithms, and a fully working **Singapore lottery number picker** (`88_lucky88.singlish`). Every example is a love letter to the Little Red Dot.
+
+---
+
+## 🚫 Who Should NOT Use Singlish
+
+- People who enjoy writing `package` and `func` unironically
+- Developers who think compiler error messages should be "encouraging"
+- Anyone who says "lah" fewer than 3 times per sentence in real life
+- Fans of TypeScript *(you know what you did)*
+
+Everyone else: welcome to the kampung. `can` one.
+
+---
 
 ## 🛠 Prerequisites
 
