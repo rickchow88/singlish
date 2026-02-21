@@ -1,0 +1,24 @@
+// Nested maps: a map inside a map, like a block party seating chart
+kampung main
+dapao "fmt"
+
+action boss() {
+    // Block -> Unit -> Resident name
+    got block menu[tar]menu[tar]tar = menu[tar]menu[tar]tar{
+        "Block 12": {
+            "#01-01": "Ah Beng",
+            "#01-02": "Siti",
+        },
+        "Block 34": {
+            "#03-10": "Ramu",
+            "#03-11": "Ah Lian",
+        },
+    }
+
+    loop blk, units = all block {
+        gong("Block:", blk)
+        loop unit, name = all units {
+            fmt.Printf("  Unit %s -> %s\n", unit, name)
+        }
+    }
+}

@@ -1,0 +1,29 @@
+// Strconv: convert between strings and numbers — kira money properly
+kampung main
+dapao "fmt"
+dapao "strconv"
+
+action boss() {
+    // String to int — parse the price tag
+    got priceStr = "350"
+    got price, err = strconv.Atoi(priceStr)
+    nasi err != kosong {
+        gong("Cannot convert lah:", err)
+        balek
+    }
+    fmt.Printf("Price: $%d cents\n", price)
+
+    // Int to string — format for display
+    got qty nombor = 5
+    got qtyStr = strconv.Itoa(qty)
+    gong("Quantity string:", qtyStr)
+
+    // Float parsing — for the decimal prices at Cold Storage
+    got floatStr = "19.90"
+    got amount, err2 = strconv.ParseFloat(floatStr, 64)
+    nasi err2 != kosong {
+        gong("Parse error:", err2)
+        balek
+    }
+    fmt.Printf("Amount: $%.2f\n", amount)
+}

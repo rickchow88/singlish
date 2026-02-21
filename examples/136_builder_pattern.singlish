@@ -1,0 +1,49 @@
+// Method chaining via builder pattern: build your order step by step — like customising your kopi
+kampung main
+dapao "fmt"
+
+pattern KopiOrder barang {
+    base    tar
+    milk    tar
+    sugar   tar
+    iced    bolehtak
+}
+
+// SetBase sets the coffee base and returns the builder for chaining
+action (k *KopiOrder) SetBase(b tar) *KopiOrder {
+    k.base = b
+    balek k
+}
+
+action (k *KopiOrder) SetMilk(m tar) *KopiOrder {
+    k.milk = m
+    balek k
+}
+
+action (k *KopiOrder) SetSugar(s tar) *KopiOrder {
+    k.sugar = s
+    balek k
+}
+
+action (k *KopiOrder) SetIced(iced bolehtak) *KopiOrder {
+    k.iced = iced
+    balek k
+}
+
+action (k *KopiOrder) String() tar {
+    got icedStr = ""
+    nasi k.iced {
+        icedStr = " (Iced)"
+    }
+    balek fmt.Sprintf("%s + %s + %s%s", k.base, k.milk, k.sugar, icedStr)
+}
+
+action boss() {
+    got order = (&KopiOrder{}).
+        SetBase("Robusta").
+        SetMilk("Evaporated Milk").
+        SetSugar("Gula Melaka").
+        SetIced(can)
+
+    gong("Your kopi order:", order)
+}

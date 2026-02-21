@@ -1,0 +1,40 @@
+// Stringer on enum: give meaningful names to iota constants — like naming MRT lines properly
+// Each line is a typed integer constant; String() gives it a human-readable label
+kampung main
+dapao "fmt"
+
+pattern MRTLine nombor
+
+// Define each MRT line as a typed constant
+// Note: 'confirm (' block grouping not supported — use inline iota expressions via raw Go
+confirm NSLine MRTLine = 0
+confirm EWLine MRTLine = 1
+confirm CCLine MRTLine = 2
+confirm DTLine MRTLine = 3
+confirm TELine MRTLine = 4
+
+// String satisfies the Stringer interface — so gong() prints nicely
+action (m MRTLine) String() tar {
+    see_how m {
+    say NSLine:
+        balek "North-South Line (Red)"
+    say EWLine:
+        balek "East-West Line (Green)"
+    say CCLine:
+        balek "Circle Line (Yellow)"
+    say DTLine:
+        balek "Downtown Line (Blue)"
+    say TELine:
+        balek "Thomson-East Coast Line (Brown)"
+    anyhow:
+        balek "Unknown Line"
+    }
+}
+
+action boss() {
+    got lines = []MRTLine{NSLine, EWLine, CCLine, DTLine, TELine}
+    gong("Singapore MRT Lines:")
+    loop _, line = all lines {
+        fmt.Printf("  Line %d: %s\n", nombor(line), line)
+    }
+}

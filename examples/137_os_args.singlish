@@ -1,0 +1,21 @@
+// os.Args: parse command-line arguments — read what the uncle at the counter says
+kampung main
+dapao "fmt"
+dapao "os"
+
+action boss() {
+    // os.Args[0] is the program name; rest are arguments passed in
+    got args = os.Args
+
+    fmt.Printf("Program: %s\n", args[0])
+
+    nasi count(args) < 2 {
+        gong("Usage: singlish run 137_os_args.singlish <your name>")
+        gong("No name given, using default: Ah Boy")
+        gong("Hello, Ah Boy!")
+        balek
+    }
+
+    got name = args[1]
+    fmt.Printf("Hello, %s! Welcome to Singapore!\n", name)
+}

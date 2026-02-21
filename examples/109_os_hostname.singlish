@@ -1,0 +1,12 @@
+// OS Hostname Example
+kampung main
+dapao "fmt"
+dapao "os"
+
+action boss() {
+    got name, err = os.Hostname()
+    nasi err != kosong {
+        gabra(err)
+    }
+    gong(name)
+}

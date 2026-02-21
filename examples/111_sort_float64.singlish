@@ -1,0 +1,10 @@
+// Sort Float64 Example
+kampung main
+dapao "fmt"
+dapao "sort"
+
+action boss() {
+    got nums = []point{5.5, 2.2, 9.9}
+    sort.Float64s(nums)
+    gong(nums)
+}

@@ -1,0 +1,22 @@
+// Functional map: apply transformation to every element — one shot one kill
+// Uses a higher-order function that takes a slice and applies a function to each element
+kampung main
+dapao "fmt"
+
+action boss() {
+    got prices = []nombor{5, 10, 15, 20}
+
+    // Apply 10% GST to all prices — standard Singapore lah
+    // Define the transformer inline as a closure
+    got addGST = action(p nombor) nombor {
+        balek p + (p / 10)
+    }
+
+    got withGST = []nombor{}
+    loop _, p = all prices {
+        withGST = upsize(withGST, addGST(p))
+    }
+
+    gong("Original prices:", prices)
+    gong("With 10% GST:   ", withGST)
+}

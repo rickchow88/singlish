@@ -20,11 +20,11 @@ action boss() {
         }
     }(ctx)
 
-    // Let it run for 2 seconds
-    time.Sleep(2 * time.Second)
+    // Let it run for 100ms
+    time.Sleep(100 * time.Millisecond)
     gong("Boss: Stop mechanism triggered!")
     cancel() // Send cancellation signal
     
     // Give time to see print output
-    time.Sleep(1 * time.Second)
+    time.Sleep(100 * time.Millisecond)
 }

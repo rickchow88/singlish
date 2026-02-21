@@ -1,0 +1,8 @@
+// Filepath Base Example
+kampung main
+dapao "fmt"
+dapao "path/filepath"
+
+action boss() {
+    gong(filepath.Base("/makan/place/stall.txt"))
+}

@@ -1,0 +1,8 @@
+// Fmt Errorf Example
+kampung main
+dapao "fmt"
+
+action boss() {
+    got err = fmt.Errorf("kena block: %s", "too many people")
+    gong(err.Error())
+}

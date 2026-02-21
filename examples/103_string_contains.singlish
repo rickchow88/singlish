@@ -1,0 +1,8 @@
+// String Contains Example
+kampung main
+dapao "fmt"
+dapao "strings"
+
+action boss() {
+    gong(strings.Contains("singapore", "pore"))
+}

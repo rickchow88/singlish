@@ -1,0 +1,24 @@
+// Function as map value: dispatch table — like an uncle knowing which stall to go to
+// Store closures in a map for dynamic dispatch, no need long if-else chain
+kampung main
+dapao "fmt"
+
+action boss() {
+    got a nombor = 12
+    got b nombor = 4
+
+    // Map of string to operation result — compute all at once
+    got results = menu[tar]nombor{
+        "add":      a + b,
+        "subtract": a - b,
+        "multiply": a * b,
+    }
+
+    loop opName, result = all results {
+        fmt.Printf("%s(%d, %d) = %d\n", opName, a, b, result)
+    }
+
+    // Direct use — clean and flexible
+    gong("Direct add result:", a+b)
+    gong("Direct multiply result:", a*b)
+}

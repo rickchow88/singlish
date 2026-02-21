@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD): Project SINGLISH
 
-**Date:** 2026-01-27
-**Status:** Approved for Implementation
+**Date:** 2026-02-21
+**Status:** Implemented & Active (142 examples passing)
 **Target Audience:** AI Developer / Transpiler Engineer
 
 ## 1. Executive Summary
@@ -77,12 +77,13 @@ The goal is to build the `singlish` CLI tool. This tool handles the entire lifec
 
 ### Phase 5: Testing & Verification
 
-- [ ] **Task 5.1**: **Unit Tests**: Test individual keyword translations (e.g., input `nasi` -> output `if`).
-- [ ] **Task 5.2**: **Integration Tests**:
+- [x] **Task 5.1**: **Unit Tests**: Test individual keyword translations (e.g., input `nasi` -> output `if`).
+- [x] **Task 5.2**: **Integration Tests** — all 142 examples pass `run_all.go`:
   - Transpile and run `examples/01_hello_world.singlish`.
   - Transpile and run `examples/02_fizzbuzz.singlish`.
   - Transpile and run `examples/11_pointers.singlish` (Verify `ki` logic).
-- [ ] **Task 5.3**: **Chaos Test**: Feed invalid code to ensure the Insult Engine fires correctly.
+  - All 142 examples (01–142) verified passing as of Feb 2026.
+- [x] **Task 5.3**: **Chaos Test**: Feed invalid code to ensure the Insult Engine fires correctly.
 
 ## 5. Keyword Reference (Source of Truth)
 

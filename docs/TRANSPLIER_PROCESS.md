@@ -11,7 +11,7 @@ Always start by checking the current health of the transpiler against the existi
 
 ## 2. Isolate & Debug the Issue
 
-Take one failing script (e.g., `examples/123_new_feature.singlish`) and figure out *where* the transpiler is breaking. The pipeline is **Lexer → Parser → Codegen**.
+Take one failing script (e.g., `examples/143_new_feature.singlish`) and figure out *where* the transpiler is breaking. The pipeline is **Lexer → Parser → Codegen**.
 
 * **Lexer Error:** Usually means a character or symbol isn't recognized (rare, but happens with new operators).
 * **Parser Error:** The most common. The token stream doesn't match the expected grammar (e.g., `parseType`, `parseExpression`).
@@ -33,7 +33,7 @@ Rebuild the compiler and run the specific script that was failing:
 
 ```bash
 go build -o singlish main.go
-./singlish run examples/123_new_feature.singlish
+./singlish run examples/143_new_feature.singlish
 ```
 
 If you encounter obscure Go compiler errors at this stage, use `./singlish transpile examples/...` to inspect the generated `.go` file directly.

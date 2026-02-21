@@ -1,0 +1,29 @@
+// Slice of structs: a kopitiam menu board
+kampung main
+dapao "fmt"
+
+pattern MenuItem barang {
+    Name  tar
+    Price point
+    Spicy bolehtak
+}
+
+action boss() {
+    // Build the daily menu — all local favourites
+    // Note: 'menu' is a Singlish keyword (map), so use 'items' as variable name
+    got items = []MenuItem{
+        {Name: "Mee Goreng", Price: 4.50, Spicy: can},
+        {Name: "Kopi O Kosong", Price: 1.20, Spicy: cannot},
+        {Name: "Roti Prata", Price: 1.80, Spicy: cannot},
+        {Name: "Fish Ball Soup", Price: 3.50, Spicy: cannot},
+    }
+
+    gong("Today's Menu:")
+    loop _, item = all items {
+        got spicyLabel = "mild"
+        nasi item.Spicy {
+            spicyLabel = "spicy"
+        }
+        fmt.Printf("  %-20s $%.2f  [%s]\n", item.Name, item.Price, spicyLabel)
+    }
+}

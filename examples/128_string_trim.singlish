@@ -1,0 +1,22 @@
+// String trimming: remove unwanted whitespace — tidy up like spring cleaning
+kampung main
+dapao "fmt"
+dapao "strings"
+
+action boss() {
+    got dirty = "   Chicken Rice   "
+    // TrimSpace removes leading and trailing whitespace
+    got clean = strings.TrimSpace(dirty)
+    fmt.Printf("Before: '%s'\n", dirty)
+    fmt.Printf("After:  '%s'\n", clean)
+
+    // TrimPrefix removes a specific prefix
+    got order = "Order: Laksa"
+    got item = strings.TrimPrefix(order, "Order: ")
+    gong("Item ordered:", item)
+
+    // TrimSuffix removes a specific suffix
+    got filename = "report.pdf"
+    got noExt = strings.TrimSuffix(filename, ".pdf")
+    gong("Filename without extension:", noExt)
+}

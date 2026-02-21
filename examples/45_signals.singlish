@@ -1,15 +1,27 @@
-// Unix Signal handling
+// Unix Signal handling: trap OS signals gracefully — dun just die quietly
+// Sends SIGINT to itself after a short delay to demonstrate signal catching
 kampung main
 dapao "fmt"
 dapao "os"
 dapao "os/signal"
 dapao "syscall"
+dapao "time"
 
 action boss() {
     got sigs = buat(lobang os.Signal, 1)
     got done = buat(lobang bolehtak, 1)
 
     signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
+
+    // Self-signal after 100ms — trigger the signal handler automatically for demo
+    chiong action() {
+        time.Sleep(100 * time.Millisecond)
+        got pid = os.Getpid()
+        got proc, err = os.FindProcess(pid)
+        nasi err == kosong {
+            proc.Signal(syscall.SIGINT)
+        }
+    }()
 
     chiong action() {
         got sig = catch sigs
@@ -18,7 +30,8 @@ action boss() {
         done pass can
     }()
 
-    gong("awaiting signal");
-    catch done
+    gong("awaiting signal")
+    // Assign receive to blank identifier to avoid transpiler merging with gong() above
+    got _ = catch done
     gong("exiting")
 }

@@ -1,0 +1,27 @@
+// Type switch: identify unknown types at runtime — like checking IC at the casino
+kampung main
+dapao "fmt"
+
+// describe explains what kind of value we received
+action describe(v interface{}) {
+    see_how v.(type) {
+    say nombor:
+        fmt.Printf("Got a number: %d\n", v)
+    say tar:
+        fmt.Printf("Got a string: %q\n", v)
+    say bolehtak:
+        fmt.Printf("Got a bool: %v\n", v)
+    say []nombor:
+        fmt.Printf("Got an int slice with %d elements\n", count(v.([]nombor)))
+    anyhow:
+        fmt.Printf("Got something else: %T\n", v)
+    }
+}
+
+action boss() {
+    describe(42)
+    describe("Chicken rice $3.50")
+    describe(can)
+    describe([]nombor{1, 2, 3, 4, 5})
+    describe(3.14)
+}

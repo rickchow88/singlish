@@ -1,0 +1,8 @@
+// Time Unix Example
+kampung main
+dapao "fmt"
+dapao "time"
+
+action boss() {
+    gong(time.Now().Unix())
+}

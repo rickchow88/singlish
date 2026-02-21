@@ -1,0 +1,12 @@
+// Atomic Add Example
+// Uses sync/atomic to safely increment a counter across goroutines
+kampung main
+dapao "fmt"
+dapao "sync/atomic"
+
+action boss() {
+    // 'count' is a reserved Singlish keyword (maps to len), so use a different name
+    got counter banyak = 0
+    atomic.AddInt64(&counter, 5)
+    gong(counter)
+}

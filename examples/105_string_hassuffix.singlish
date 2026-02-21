@@ -1,0 +1,8 @@
+// String HasSuffix Example
+kampung main
+dapao "fmt"
+dapao "strings"
+
+action boss() {
+    gong(strings.HasSuffix("kopi-o", "-o"))
+}

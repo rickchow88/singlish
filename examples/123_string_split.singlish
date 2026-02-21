@@ -1,0 +1,19 @@
+// String splitting: chop up a string like cutting roti prata
+// strings.Split returns a slice of substrings
+kampung main
+dapao "fmt"
+dapao "strings"
+
+action boss() {
+    got sentence = "nasi lemak goreng mee laksa"
+    // Split by space to get individual words
+    got words = strings.Split(sentence, " ")
+    gong("Word count:", len(words))
+    loop i, w = all words {
+        fmt.Printf("Word %d: %s\n", i, w)
+    }
+
+    // Join them back together with a dash
+    got joined = strings.Join(words, "-")
+    gong("Joined:", joined)
+}

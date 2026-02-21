@@ -1,0 +1,22 @@
+// Multiple assignment: unpack values like unpacking groceries from NTUC
+kampung main
+dapao "fmt"
+
+// Returns two values — the hawker stall name and its location
+action getHawkerStall() (tar, tar) {
+    balek "Maxwell Market", "Tanjong Pagar"
+}
+
+action boss() {
+    // Grab both values at once — shiok!
+    got name, location = getHawkerStall()
+    fmt.Printf("Stall: %s, Location: %s\n", name, location)
+
+    // Swap values using a temp variable
+    got a nombor = 10
+    got b nombor = 20
+    got tmp = a
+    a = b
+    b = tmp
+    fmt.Printf("After swap: a=%d, b=%d\n", a, b)
+}

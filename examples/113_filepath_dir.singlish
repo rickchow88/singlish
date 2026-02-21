@@ -1,0 +1,8 @@
+// Filepath Dir Example
+kampung main
+dapao "fmt"
+dapao "path/filepath"
+
+action boss() {
+    gong(filepath.Dir("/makan/place/stall"))
+}

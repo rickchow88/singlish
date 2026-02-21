@@ -1,0 +1,8 @@
+// URL Escape Example
+kampung main
+dapao "fmt"
+dapao "net/url"
+
+action boss() {
+    gong(url.QueryEscape("chicken rice & chili"))
+}

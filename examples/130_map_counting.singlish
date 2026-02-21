@@ -1,0 +1,20 @@
+// Map counting: tally how many times each item appears — like counting votes at RC election
+// Note: 'count' is a Singlish keyword (maps to len), so loop variables must use different names
+kampung main
+dapao "fmt"
+
+action boss() {
+    // Votes cast at the residents' committee election
+    got votes = []tar{"Ali", "Bala", "Mei", "Ali", "Bala", "Ali", "Mei", "Ali"}
+
+    // Count occurrences in one pass
+    got tally = menu[tar]nombor{}
+    loop _, name = all votes {
+        tally[name]++
+    }
+
+    gong("Election Results:")
+    loop name, total = all tally {
+        fmt.Printf("  %-6s: %d votes\n", name, total)
+    }
+}

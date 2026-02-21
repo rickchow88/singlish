@@ -42,7 +42,7 @@ To install the Singlish CLI tool (`singlish`), follow these steps:
 
 ## 🏃 Running the Examples
 
-The repository includes a variety of examples in the `examples/` directory. Here are three to get you started:
+The repository includes **142 examples** in the `examples/` directory. Here are some to get you started:
 
 ### 1. Hello World (The Classic)
 
@@ -65,12 +65,20 @@ Shows off `loop`, `nasi`, and `den` logic.
 Watch how Singlish handles `chiong` and `lobang` for high-performance concurrency.
 
 ```bash
-./singlish run examples/16_goroutines.singlish
+./singlish run examples/03_coffee_shop_queue.singlish
 ```
 
-### 4. using AI like Antigravity,codex, gemini, Claude, etc
+### 4. Run All Examples
 
- run all singlish scripts in /examples and fix errors, run 1 test at a time directly from the terminal
+Run all scripts in one shot and see the summary:
+
+```bash
+go build -o singlish main.go && go run run_all.go
+```
+
+### 5. Using AI agents (Antigravity, Codex, Gemini, Claude, etc.)
+
+> Run all singlish scripts in `/examples` and fix errors, run 1 test at a time directly from the terminal.
 
 ## 📖 Language Reference
 
@@ -117,7 +125,7 @@ Watch how Singlish handles `chiong` and `lobang` for high-performance concurrenc
 | `ki` | `*` | Pointer |
 | `zhi` | `rune` | Rune type |
 | `heng` | `recover` | Recover from panic |
-| `kaki` | `interface{}` | Interface |
+| `kaki` | `interface` | Interface |
 | `menu` | `map` | Map definition |
 | `buat` | `make` | Make built-in |
 | `upsize` | `append` | Append built-in |
@@ -131,9 +139,13 @@ Watch how Singlish handles `chiong` and `lobang` for high-performance concurrenc
 
 > **Note**: If your code contains errors, the compiler will provide feedback in the form of authentic Singlish diagnostics (e.g., *"Wake up your idea"*, *"Blur like sotong"*, *"Eh bodoh"*, *"Catch no ball sia"*, or *"Simi sai is this?"*).
 
-## 📂 Examples (First 50)
+> **Gotcha**: `menu`, `count`, `buat`, `upsize`, `buang`, `kwear`, `gong`, `dun`, `or`, `somemore` are **reserved keywords** — do not use them as variable or loop-variable names.
 
-Explore all [100+ examples here](/examples).
+## 📂 Examples (142 total)
+
+Explore all [142 examples here](/examples).
+
+### Foundation (01–20)
 
 1. [01_hello_world.singlish](/examples/01_hello_world.singlish)
 2. [02_fizzbuzz.singlish](/examples/02_fizzbuzz.singlish)
@@ -155,44 +167,146 @@ Explore all [100+ examples here](/examples).
 18. [18_json_decode.singlish](/examples/18_json_decode.singlish)
 19. [19_http_server.singlish](/examples/19_http_server.singlish)
 20. [20_http_client.singlish](/examples/20_http_client.singlish)
-21. [21_cmd_args.singlish](/examples/21_cmd_args.singlish)
-22. [22_strings.singlish](/examples/22_strings.singlish)
-23. [23_math.singlish](/examples/23_math.singlish)
-24. [24_time.singlish](/examples/24_time.singlish)
-25. [25_tickers.singlish](/examples/25_tickers.singlish)
-26. [26_mutex.singlish](/examples/26_mutex.singlish)
-27. [27_waitgroup.singlish](/examples/27_waitgroup.singlish)
-28. [28_atomic.singlish](/examples/28_atomic.singlish)
-29. [29_context_timeout.singlish](/examples/29_context_timeout.singlish)
-30. [30_context_cancel.singlish](/examples/30_context_cancel.singlish)
-31. [31_lucky_numbers.singlish](/examples/31_lucky_numbers.singlish)
-32. [32_makan_order.singlish](/examples/32_makan_order.singlish)
-33. [33_sorting.singlish](/examples/33_sorting.singlish)
-34. [34_string_functions.singlish](/examples/34_string_functions.singlish)
-35. [35_regex.singlish](/examples/35_regex.singlish)
-36. [36_url_parsing.singlish](/examples/36_url_parsing.singlish)
-37. [37_sha1_hashes.singlish](/examples/37_sha1_hashes.singlish)
-38. [38_base64_encoding.singlish](/examples/38_base64_encoding.singlish)
-39. [39_random_numbers.singlish](/examples/39_random_numbers.singlish)
-40. [40_number_parsing.singlish](/examples/40_number_parsing.singlish)
-41. [41_xml_handling.singlish](/examples/41_xml_handling.singlish)
-42. [42_custom_errors.singlish](/examples/42_custom_errors.singlish)
-43. [43_environment_variables.singlish](/examples/43_environment_variables.singlish)
-44. [44_subprocesses.singlish](/examples/44_subprocesses.singlish)
-45. [45_signals.singlish](/examples/45_signals.singlish)
-46. [46_exit.singlish](/examples/46_exit.singlish)
-47. [47_embedding.singlish](/examples/47_embedding.singlish)
-48. [48_method_sets.singlish](/examples/48_method_sets.singlish)
-49. [49_interface_embedding.singlish](/examples/49_interface_embedding.singlish)
-50. [50_select_with_default.singlish](/examples/50_select_with_default.singlish)
+
+### Standard Library (21–50)
+
+1. [21_cmd_args.singlish](/examples/21_cmd_args.singlish)
+2. [22_strings.singlish](/examples/22_strings.singlish)
+3. [23_math.singlish](/examples/23_math.singlish)
+4. [24_time.singlish](/examples/24_time.singlish)
+5. [25_tickers.singlish](/examples/25_tickers.singlish)
+6. [26_mutex.singlish](/examples/26_mutex.singlish)
+7. [27_waitgroup.singlish](/examples/27_waitgroup.singlish)
+8. [28_atomic.singlish](/examples/28_atomic.singlish)
+9. [29_context_timeout.singlish](/examples/29_context_timeout.singlish)
+10. [30_context_cancel.singlish](/examples/30_context_cancel.singlish)
+11. [31_lucky_numbers.singlish](/examples/31_lucky_numbers.singlish)
+12. [32_makan_order.singlish](/examples/32_makan_order.singlish)
+13. [33_sorting.singlish](/examples/33_sorting.singlish)
+14. [34_string_functions.singlish](/examples/34_string_functions.singlish)
+15. [35_regex.singlish](/examples/35_regex.singlish)
+16. [36_url_parsing.singlish](/examples/36_url_parsing.singlish)
+17. [37_sha1_hashes.singlish](/examples/37_sha1_hashes.singlish)
+18. [38_base64_encoding.singlish](/examples/38_base64_encoding.singlish)
+19. [39_random_numbers.singlish](/examples/39_random_numbers.singlish)
+20. [40_number_parsing.singlish](/examples/40_number_parsing.singlish)
+21. [41_xml_handling.singlish](/examples/41_xml_handling.singlish)
+22. [42_custom_errors.singlish](/examples/42_custom_errors.singlish)
+23. [43_environment_variables.singlish](/examples/43_environment_variables.singlish)
+24. [44_subprocesses.singlish](/examples/44_subprocesses.singlish)
+25. [45_signals.singlish](/examples/45_signals.singlish)
+26. [46_exit.singlish](/examples/46_exit.singlish)
+27. [47_embedding.singlish](/examples/47_embedding.singlish)
+28. [48_method_sets.singlish](/examples/48_method_sets.singlish)
+29. [49_interface_embedding.singlish](/examples/49_interface_embedding.singlish)
+30. [50_select_with_default.singlish](/examples/50_select_with_default.singlish)
+
+### Intermediate (51–80)
+
+1. [51_closing_channels.singlish](/examples/51_closing_channels.singlish)
+2. [52_timers.singlish](/examples/52_timers.singlish)
+3. [53_type_assertion.singlish](/examples/53_type_assertion.singlish)
+4. [54_closures.singlish](/examples/54_closures.singlish)
+5. [55_fibonacci_closure.singlish](/examples/55_fibonacci_closure.singlish)
+6. [56_bubble_sort.singlish](/examples/56_bubble_sort.singlish)
+7. [57_binary_search.singlish](/examples/57_binary_search.singlish)
+8. [58_named_returns.singlish](/examples/58_named_returns.singlish)
+9. [59_multiple_return.singlish](/examples/59_multiple_return.singlish)
+10. [60_error_wrapping.singlish](/examples/60_error_wrapping.singlish)
+11. [61_iota_enum.singlish](/examples/61_iota_enum.singlish)
+12. [62_string_builder.singlish](/examples/62_string_builder.singlish)
+13. [63_sprintf_formatting.singlish](/examples/63_sprintf_formatting.singlish)
+14. [64_bytes_buffer.singlish](/examples/64_bytes_buffer.singlish)
+15. [65_buffered_channels.singlish](/examples/65_buffered_channels.singlish)
+16. [66_worker_pool.singlish](/examples/66_worker_pool.singlish)
+17. [67_pipeline.singlish](/examples/67_pipeline.singlish)
+18. [68_rate_limiting.singlish](/examples/68_rate_limiting.singlish)
+19. [69_sync_once.singlish](/examples/69_sync_once.singlish)
+20. [70_sync_map.singlish](/examples/70_sync_map.singlish)
+21. [71_rwmutex.singlish](/examples/71_rwmutex.singlish)
+22. [72_stringer_interface.singlish](/examples/72_stringer_interface.singlish)
+23. [73_linked_list.singlish](/examples/73_linked_list.singlish)
+24. [74_stack.singlish](/examples/74_stack.singlish)
+25. [75_queue.singlish](/examples/75_queue.singlish)
+26. [76_higher_order_funcs.singlish](/examples/76_higher_order_funcs.singlish)
+27. [77_composite_literals.singlish](/examples/77_composite_literals.singlish)
+28. [78_goroutine_fanout.singlish](/examples/78_goroutine_fanout.singlish)
+29. [79_init_function.singlish](/examples/79_init_function.singlish)
+30. [80_slice_tricks.singlish](/examples/80_slice_tricks.singlish)
+
+### Advanced (81–122)
+
+1. [81_map_tricks.singlish](/examples/81_map_tricks.singlish)
+2. [82_string_conversion.singlish](/examples/82_string_conversion.singlish)
+3. [83_type_aliases.singlish](/examples/83_type_aliases.singlish)
+4. [84_json_unmarshal.singlish](/examples/84_json_unmarshal.singlish)
+5. [85_defer_order.singlish](/examples/85_defer_order.singlish)
+6. [86_select_timeout.singlish](/examples/86_select_timeout.singlish)
+7. [87_sync_pool.singlish](/examples/87_sync_pool.singlish)
+8. [88_atomic_value.singlish](/examples/88_atomic_value.singlish)
+9. [89_reflect_typeof.singlish](/examples/89_reflect_typeof.singlish)
+10. [90_context_value.singlish](/examples/90_context_value.singlish)
+11. [91_error_is_as.singlish](/examples/91_error_is_as.singlish)
+12. [92_sort_custom.singlish](/examples/92_sort_custom.singlish)
+13. [93_sync_cond.singlish](/examples/93_sync_cond.singlish)
+14. [94_channel_range.singlish](/examples/94_channel_range.singlish)
+15. [95_testing_mock.singlish](/examples/95_testing_mock.singlish)
+16. [96_embedded_interfaces.singlish](/examples/96_embedded_interfaces.singlish)
+17. [97_struct_tags.singlish](/examples/97_struct_tags.singlish)
+18. [98_method_expressions.singlish](/examples/98_method_expressions.singlish)
+19. [99_closures_state.singlish](/examples/99_closures_state.singlish)
+20. [100_panic_defer.singlish](/examples/100_panic_defer.singlish)
+21. [101_empty_interface.singlish](/examples/101_empty_interface.singlish)
+22. [102_type_methods.singlish](/examples/102_type_methods.singlish)
+23. [103_string_contains.singlish](/examples/103_string_contains.singlish)
+24. [104_string_hasprefix.singlish](/examples/104_string_hasprefix.singlish)
+25. [105_string_hassuffix.singlish](/examples/105_string_hassuffix.singlish)
+26. [106_math_min.singlish](/examples/106_math_min.singlish)
+27. [107_math_max.singlish](/examples/107_math_max.singlish)
+28. [108_time_unix.singlish](/examples/108_time_unix.singlish)
+29. [109_os_hostname.singlish](/examples/109_os_hostname.singlish)
+30. [110_bytes_reader.singlish](/examples/110_bytes_reader.singlish)
+31. [111_sort_float64.singlish](/examples/111_sort_float64.singlish)
+32. [112_crypto_md5.singlish](/examples/112_crypto_md5.singlish)
+33. [113_filepath_dir.singlish](/examples/113_filepath_dir.singlish)
+34. [114_filepath_base.singlish](/examples/114_filepath_base.singlish)
+35. [115_regexp_match.singlish](/examples/115_regexp_match.singlish)
+36. [116_url_escape.singlish](/examples/116_url_escape.singlish)
+37. [117_json_marshalindent.singlish](/examples/117_json_marshalindent.singlish)
+38. [118_time_parse.singlish](/examples/118_time_parse.singlish)
+39. [119_fmt_errorf.singlish](/examples/119_fmt_errorf.singlish)
+40. [120_sync_waitgroup_loop.singlish](/examples/120_sync_waitgroup_loop.singlish)
+41. [121_atomic_add.singlish](/examples/121_atomic_add.singlish)
+42. [122_reflect_value.singlish](/examples/122_reflect_value.singlish)
+
+### New: Singapore Edition (123–142)
+
+1. [123_string_split.singlish](/examples/123_string_split.singlish) — `strings.Split` / `strings.Join`
+2. [124_multiple_assign.singlish](/examples/124_multiple_assign.singlish) — Multiple return values & swap
+3. [125_slice_of_structs.singlish](/examples/125_slice_of_structs.singlish) — Kopitiam menu board
+4. [126_nested_maps.singlish](/examples/126_nested_maps.singlish) — Map inside a map (HDB seating)
+5. [127_func_map.singlish](/examples/127_func_map.singlish) — Higher-order function + GST transform
+6. [128_string_trim.singlish](/examples/128_string_trim.singlish) — `TrimSpace`, `TrimPrefix`, `TrimSuffix`
+7. [129_goroutine_countdown.singlish](/examples/129_goroutine_countdown.singlish) — Goroutine countdown
+8. [130_map_counting.singlish](/examples/130_map_counting.singlish) — Tally map (RC election)
+9. [131_pointer_struct.singlish](/examples/131_pointer_struct.singlish) — Bank account with pointer receivers
+10. [132_rune_handling.singlish](/examples/132_rune_handling.singlish) — Unicode/rune iteration
+11. [133_type_switch.singlish](/examples/133_type_switch.singlish) — `see_how v.(type)` dispatch
+12. [134_semaphore.singlish](/examples/134_semaphore.singlish) — Buffered channel semaphore
+13. [135_strconv.singlish](/examples/135_strconv.singlish) — `Atoi`, `Itoa`, `ParseFloat`
+14. [136_builder_pattern.singlish](/examples/136_builder_pattern.singlish) — Method chaining (kopi order)
+15. [137_os_args.singlish](/examples/137_os_args.singlish) — `os.Args` CLI arguments
+16. [138_func_dispatch.singlish](/examples/138_func_dispatch.singlish) — Results dispatch table
+17. [139_memoization.singlish](/examples/139_memoization.singlish) — Cached Fibonacci
+18. [140_interface_stack.singlish](/examples/140_interface_stack.singlish) — Generic stack with `interface{}`
+19. [141_sort_slice.singlish](/examples/141_sort_slice.singlish) — `sort.Slice` custom comparator
+20. [142_stringer_enum.singlish](/examples/142_stringer_enum.singlish) — MRT line enum with `String()`
 
 ## Test with
 
 > go build -o singlish main.go && go run run_all.go
 
 ---
-
-> Browse the [full list of 80+ examples here](#-examples-first-50).
 
 ## 🤖 Development Loop (Ralph)
 

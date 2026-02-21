@@ -1,0 +1,8 @@
+// Math Min Example
+kampung main
+dapao "fmt"
+dapao "math"
+
+action boss() {
+    gong(math.Min(2.5, 4.2))
+}

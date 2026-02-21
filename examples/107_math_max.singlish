@@ -1,0 +1,8 @@
+// Math Max Example
+kampung main
+dapao "fmt"
+dapao "math"
+
+action boss() {
+    gong(math.Max(5.5, 1.2))
+}

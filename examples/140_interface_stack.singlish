@@ -1,0 +1,52 @@
+// Stack implemented with interface{}: push and pop like Q token at the polyclinic
+// A general-purpose stack that can hold any value type
+kampung main
+dapao "fmt"
+
+pattern Stack barang {
+    items []interface{}
+}
+
+// Push adds an item to the top of the stack — chope your spot
+action (s *Stack) Push(v interface{}) {
+    s.items = upsize(s.items, v)
+}
+
+// Pop removes and returns the top item — your turn already, come lah
+action (s *Stack) Pop() (interface{}, bolehtak) {
+    nasi count(s.items) == 0 {
+        balek kosong, cannot
+    }
+    got top = s.items[count(s.items)-1]
+    s.items = s.items[:count(s.items)-1]
+    balek top, can
+}
+
+// Peek looks at the top without removing — like peeking at your Q number
+action (s *Stack) Peek() (interface{}, bolehtak) {
+    nasi count(s.items) == 0 {
+        balek kosong, cannot
+    }
+    balek s.items[count(s.items)-1], can
+}
+
+action boss() {
+    got s Stack
+    s.Push("Orchard")
+    s.Push("Dhoby Ghaut")
+    s.Push("Little India")
+    s.Push("Farrer Park")
+
+    got top, hasTop = s.Peek()
+    nasi hasTop {
+        fmt.Printf("Top of stack: %v\n", top)
+    }
+
+    loop {
+        got v, more = s.Pop()
+        nasi more == cannot {
+            cabut
+        }
+        fmt.Printf("Popped: %v\n", v)
+    }
+}

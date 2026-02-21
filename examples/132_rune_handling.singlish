@@ -1,0 +1,21 @@
+// Rune handling: work with Unicode characters one by one — like reading MRT signs in all languages
+kampung main
+dapao "fmt"
+
+action boss() {
+    // Singapore MRT station announcement in multiple scripts
+    got greeting = "Hello你好வணக்கம்"
+
+    // len() counts bytes, not characters
+    fmt.Printf("Byte length:      %d\n", count(greeting))
+
+    // Convert to rune slice to count actual characters
+    got runes = []zhi(greeting)
+    fmt.Printf("Character count:  %d\n", count(runes))
+
+    // Iterate over runes with range — each iteration gives correct Unicode codepoint
+    gong("Characters:")
+    loop i, r = all greeting {
+        fmt.Printf("  index %2d: %c (U+%04X)\n", i, r, r)
+    }
+}

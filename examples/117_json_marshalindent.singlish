@@ -1,0 +1,10 @@
+// JSON MarshalIndent Example
+kampung main
+dapao "fmt"
+dapao "encoding/json"
+
+action boss() {
+    got dishes = menu[tar]nombor{"kopi": 1}
+    got out, _ = json.MarshalIndent(dishes, "", "  ")
+    gong(string(out))
+}

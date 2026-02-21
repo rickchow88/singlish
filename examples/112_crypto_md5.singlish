@@ -1,0 +1,9 @@
+// Crypto MD5 Example
+kampung main
+dapao "fmt"
+dapao "crypto/md5"
+
+action boss() {
+    got data = []byte("teh si")
+    gong(fmt.Sprintf("%x", md5.Sum(data)))
+}

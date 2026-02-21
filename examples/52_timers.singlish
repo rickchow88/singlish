@@ -4,7 +4,7 @@ dapao "fmt"
 dapao "time"
 
 action boss() {
-    got timer1 = time.NewTimer(2 * time.Second);
+    got timer1 = time.NewTimer(500 * time.Millisecond);
 
     catch timer1.C
     gong("Timer 1 expired")

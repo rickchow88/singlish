@@ -1,0 +1,28 @@
+// sort.Slice with custom comparison: sort hawker stalls by queue length
+kampung main
+dapao "fmt"
+dapao "sort"
+
+pattern HawkerStall barang {
+    Name        tar
+    QueueLength nombor
+}
+
+action boss() {
+    got stalls = []HawkerStall{
+        {Name: "Tian Tian Chicken Rice", QueueLength: 42},
+        {Name: "Beach Road Prawn Mee",   QueueLength: 15},
+        {Name: "Old Chang Kee",          QueueLength: 8},
+        {Name: "Liao Fan Hawker Chan",   QueueLength: 30},
+    }
+
+    // Sort ascending by queue — shortest wait first, smart move
+    sort.Slice(stalls, action(i, j nombor) bolehtak {
+        balek stalls[i].QueueLength < stalls[j].QueueLength
+    })
+
+    gong("Hawker stalls sorted by queue (shortest first):")
+    loop i, s = all stalls {
+        fmt.Printf("  %d. %-30s %2d people waiting\n", i+1, s.Name, s.QueueLength)
+    }
+}

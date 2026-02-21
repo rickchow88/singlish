@@ -1,0 +1,8 @@
+// String HasPrefix Example
+kampung main
+dapao "fmt"
+dapao "strings"
+
+action boss() {
+    gong(strings.HasPrefix("merlion", "mer"))
+}

@@ -1,0 +1,40 @@
+// Pointer to struct: share data without copying — pass by reference like sharing a hawker table
+kampung main
+dapao "fmt"
+
+pattern Account barang {
+    Owner   tar
+    Balance point
+}
+
+// Deposit adds money to the account — modifies original, not a copy
+action deposit(acc *Account, amount point) {
+    acc.Balance += amount
+}
+
+// Withdraw deducts money — check funds first, blur block dun overdraft
+action withdraw(acc *Account, amount point) salah {
+    nasi acc.Balance < amount {
+        balek fmt.Errorf("not enough money lah, balance only %.2f", acc.Balance)
+    }
+    acc.Balance -= amount
+    balek kosong
+}
+
+action boss() {
+    got acc = &Account{Owner: "Ah Seng", Balance: 100.00}
+    deposit(acc, 50.00)
+    fmt.Printf("After deposit: $%.2f\n", acc.Balance)
+
+    err := withdraw(acc, 200.00)
+    nasi err != kosong {
+        gong("Error:", err)
+    }
+
+    err = withdraw(acc, 80.00)
+    nasi err != kosong {
+        gong("Error:", err)
+    } den {
+        fmt.Printf("After withdrawal: $%.2f\n", acc.Balance)
+    }
+}

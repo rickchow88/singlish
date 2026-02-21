@@ -1,0 +1,11 @@
+// Bytes Reader Example
+kampung main
+dapao "fmt"
+dapao "bytes"
+
+action boss() {
+    got r = bytes.NewReader([]byte("kopi"))
+    got b = buat([]byte, 2)
+    r.Read(b)
+    gong(string(b))
+}

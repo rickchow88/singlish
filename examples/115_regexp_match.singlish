@@ -1,0 +1,9 @@
+// Regexp Match Example
+kampung main
+dapao "fmt"
+dapao "regexp"
+
+action boss() {
+    got ok, _ = regexp.MatchString("p([a-z]+)ch", "peach")
+    gong(ok)
+}

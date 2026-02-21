@@ -1,0 +1,29 @@
+// Memoization: cache expensive results — remember the answer like remembering your NRIC number
+// Avoids recomputing already-known Fibonacci values by storing them in a cache map
+kampung main
+dapao "fmt"
+
+// Cache stores previously computed Fibonacci values
+got fibCache = menu[nombor]nombor{}
+
+// fib computes Fibonacci using memoization — no need recompute what you already know
+action fib(n nombor) nombor {
+    nasi n <= 1 {
+        balek n
+    }
+    // Check cache before computing — separate lookup and check
+    got cached, ok = fibCache[n]
+    nasi ok {
+        balek cached
+    }
+    got result = fib(n-1) + fib(n-2)
+    fibCache[n] = result
+    balek result
+}
+
+action boss() {
+    gong("Fibonacci sequence (memoized):")
+    loop i := 0; i <= 15; i++ {
+        fmt.Printf("  fib(%2d) = %d\n", i, fib(i))
+    }
+}

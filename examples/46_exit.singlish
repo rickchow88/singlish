@@ -6,5 +6,5 @@ dapao "os"
 action boss() {
     nanti gong("This will not be printed because we use os.Exit")
 
-    os.Exit(3)
+    os.Exit(0)
 }

@@ -1,0 +1,16 @@
+// Sync WaitGroup Loop Example
+kampung main
+dapao "fmt"
+dapao "sync"
+
+action boss() {
+    got wg sync.WaitGroup
+    loop i := 0; i < 3; i++ {
+        wg.Add(1)
+        chiong action(n nombor) {
+            nanti wg.Done()
+            gong(n)
+        }(i)
+    }
+    wg.Wait()
+}

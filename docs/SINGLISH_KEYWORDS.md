@@ -1,6 +1,6 @@
-# PROPOSED KEYWORDS FOR SINGLISH (Based on CURSED)
+# SINGLISH Keyword Reference
 
-This document proposes a comprehensive and culturally authentic set of keywords for the **SINGLISH** programming language, mapping directly from standard **CURSED** keywords.
+This document provides a comprehensive reference for all **SINGLISH** keywords — their Go equivalents, cultural origin, and usage context. Singlish is built on top of Go; every Singlish keyword maps 1:1 to a Go keyword or built-in.
 
 ## 1. Design Philosophy
 
@@ -90,7 +90,7 @@ This document proposes a comprehensive and culturally authentic set of keywords 
 
 | Concept | Standard (Go) | CURSED | **Proposed SINGLISH** | Reason / Context |
 |:--- |:--- |:--- |:--- |:--- |
-| **Interface** | `interface` | `vibe_check` (n/a) | **`kaki`** | "Same kaki" (Same group/type). Defines a shared behavior. |
+| **Interface** | `interface` | `vibe_check` (n/a) | **`kaki`** | "Same kaki" (Same group/type). Defines a shared behavior. Use `pattern Foo kaki { ... }` for interface definitions. |
 | **Map** | `map` | `tea_spill` | **`menu`** | Key-Value pairs, like a food menu. |
 | **Connect** | `concat` | `link` | **`sambung`** | Join strings or lists. |
 
@@ -116,8 +116,8 @@ This document proposes a comprehensive and culturally authentic set of keywords 
 kampung main
 dapao "fmt"
 
-action main() {
-    fmt.Println("Hello Singapore!")
+action boss() {
+    gong("Hello Singapore!")
 }
 ```
 
@@ -127,19 +127,19 @@ action main() {
 kampung main
 dapao "fmt"
 
-action main() {
-    confirm MAX = 100
+action boss() {
+    confirm MAX nombor = 100
     got i nombor = 1
 
     loop i <= MAX {
-        kalo i % 15 == 0 {
-            fmt.Println("FizzBuzz")
-        } den kalo i % 3 == 0 {
-            fmt.Println("Fizz")
-        } den kalo i % 5 == 0 {
-            fmt.Println("Buzz")
+        nasi i % 15 == 0 {
+            gong("FizzBuzz")
+        } den nasi i % 3 == 0 {
+            gong("Fizz")
+        } den nasi i % 5 == 0 {
+            gong("Buzz")
         } den {
-            fmt.Println(i)
+            gong(i)
         }
         i++
     }
@@ -149,22 +149,22 @@ action main() {
 ### Async Worker (Goroutines)
 
 ```singlish
-kampung worker_demo
+kampung main
+dapao "fmt"
 
-action worker(lobang<string> c) {
-    nanti c.close()
-    // Worker logic
-    c.pass("Swee lah")
+action worker(ch lobang tar) {
+    ch pass "Swee lah!"
+    kwear(ch)
 }
 
-action main() {
-    got my_lobang = make(lobang<string>)
-    
-    // Start goroutine
-    chiong worker(my_lobang)
+action boss() {
+    got ch = buat(lobang tar, 1)
 
-    // Receive
-    got result = catch my_lobang
+    // Start goroutine
+    chiong worker(ch)
+
+    // Receive from channel
+    got result = catch ch
     gong(result)
 }
 ```
@@ -172,16 +172,24 @@ action main() {
 ### Interface implementation
 
 ```singlish
+kampung main
+dapao "fmt"
+
 pattern Driver kaki {
-    action drive()
+    Drive() tar
 }
 
 pattern Uncle barang {
-    got name tok
+    Name tar
 }
 
-action (u *Uncle) drive() {
-    gong("Siam ah! Uncle coming!")
+action (u *Uncle) Drive() tar {
+    balek "Siam ah! Uncle " + u.Name + " coming!"
+}
+
+action boss() {
+    got d Driver = &Uncle{Name: "Tan"}
+    gong(d.Drive())
 }
 ```
 

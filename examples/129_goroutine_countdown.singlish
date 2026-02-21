@@ -1,0 +1,21 @@
+// Countdown with goroutines: fire off tasks like launching sky lanterns
+kampung main
+dapao "fmt"
+dapao "sync"
+dapao "time"
+
+action boss() {
+    got wg sync.WaitGroup
+    // Launch 5 goroutines, each counts down from its number
+    loop i := 5; i > 0; i-- {
+        wg.Add(1)
+        chiong action(n nombor) {
+            nanti wg.Done()
+            // Stagger slightly so output is interesting
+            time.Sleep(time.Duration(n) * time.Millisecond * 50)
+            fmt.Printf("Goroutine %d: Launching!\n", n)
+        }(i)
+    }
+    wg.Wait()
+    gong("All rockets launched!")
+}
