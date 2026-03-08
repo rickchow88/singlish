@@ -19,3 +19,6 @@ bin/singlish
 .tmp/
 coverage/
 dist/
+
+# Personal / experimental
+#examples/88_lucky88win.singlish
